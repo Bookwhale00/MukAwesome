@@ -71,11 +71,21 @@ def profile_view(request):
     GET : 현재 로그인한 사람의 프로필을 보여줍니다.
     PUT : 현재 로그인한 사람의 프로필을 수정합니다. 
     """
-    profiles = UserInfo.objects.all()
-    data = []
+    if request.method == "GET":
+        profiles = UserInfo.objects.all()
+        data = []
 
-    for profile in profiles:
-        data.append({
-            "사용자 아이디":UserInfo.username,
-        })
-    return HttpResponse(data)
+        for profile in profiles:
+            data.append({
+                "사용자 아이디": UserInfo.username,
+                "이름": UserInfo.username,
+                "이메일": UserInfo.email,
+                "한마디": UserInfo.bio,
+                "TMI": UserInfo.tmi,
+                "MBTI": UserInfo.mbti,
+                "최애음식": UserInfo.favorite,
+            })
+        return HttpResponse(data)
+    
+    else:
+        pass
