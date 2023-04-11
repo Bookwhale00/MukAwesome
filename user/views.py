@@ -29,7 +29,7 @@ def sign_up_view(request):
                 return render(request, 'user/signup.html', {'error':'사용자가 존재합니다.'})
             else:
                 UserInfo.objects.create_user(username=username, password=password, bio=bio)
-                return redirect('/sign-in')
+                return redirect('/api/sign-in')
             
             
 def sign_in_view(request):
