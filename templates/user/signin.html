@@ -6,7 +6,7 @@
 {% block content %}
 <div class="wrap">
     <span class="title"> 로그인</span>
-    <form class="form" method="post" action="/sign-in/">
+    <form class="form" method="post" action="/api/sign-in/">
         {% csrf_token %}
         <div>
             <label for="username">이름</label>
@@ -24,7 +24,7 @@
         {% endif %}
         <div style="float: right" class="button_box">
             <button type="submit">로그인</button>
-            <a href="/sign-up">회원가입 페이지로</a>
+            <a href="/api/sign-up">회원가입 페이지로</a>
         </div>
     </form>
 </div>

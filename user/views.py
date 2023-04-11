@@ -34,9 +34,8 @@ def sign_up_view(request):
             # elif exist_user_password:
             #     return render(request, "user/signup.html", {'error':'사용중인 비밀번호 입니다.'})
             else:
-                print(exist_user_name)
-                UserInfo.objects.create_user(username=username, password=password, email=email)
-                return redirect('/sign-in')
+                UserInfo.objects.create_user(username=username, password=password, bio=bio)
+                return redirect('/api/sign-in')
             
             
 def sign_in_view(request):
