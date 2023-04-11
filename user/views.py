@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from .forms import UpdateUserInfo
+from django.contrib import messages
 
 
 def sign_up_view(request):
@@ -65,7 +67,7 @@ def logout(request):
     auth.logout(request)
     return redirect('/sign-in/')
 
-# 프로필보기
+# 프로필 보기
 @login_required # 로그인해야만 볼 수 있다.
 def profile_view(request):
     """
@@ -73,3 +75,21 @@ def profile_view(request):
     """
     if request.method == 'GET':
         return render(request, 'user/profile.html')
+    
+# 프로필 수정
+@login_required
+def profile_update_view(request):
+    if request.method == 'POST':
+        update_profile = UpdateUserInfo(request.POST, instance = request.user)
+
+        if update_profile.is_valid():
+            update_profile.save()
+            messages.success(request, '프로필이 수정되었습니다.')
+            return render(request, 'user/profile.html')
+        else:
+            update_profile = UpdateUserInfo(instance = request.user)
+
+            return render(request, 'user/profile-update.html', {'update_profile':update_profile})
+        
+    elif request.method == 'GET':
+        return render(request, 'user/profile-update.html')
