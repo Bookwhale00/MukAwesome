@@ -48,7 +48,8 @@ def sign_in_view(request):
         me = auth.authenticate(request, username=username, password=password)
         if me is not None:
             auth.login(request, me)
-            return redirect('/')
+            return redirect('/profile')
+            # home이 없어서 임시로 로그인 성공하면 profile페이지로 가도록 해놨습니다!
         else:
             return render(request,'user/signin.html',{'error':'유저이름 혹은 패스워드를 확인 해 주세요'})
     elif request.method == 'GET':
@@ -62,30 +63,13 @@ def sign_in_view(request):
 @login_required
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+    return redirect('/sign-in')
 
 # 프로필보기
 @login_required # 로그인해야만 볼 수 있다.
 def profile_view(request):
     """
-    GET : 현재 로그인한 사람의 프로필을 보여줍니다.
-    PUT : 현재 로그인한 사람의 프로필을 수정합니다. 
+    GET = 현재 로그인 한 사람 데이터 가져오기
     """
-    if request.method == "GET":
-        profiles = UserInfo.objects.all()
-        data = []
-
-        for profile in profiles:
-            data.append({
-                "사용자 아이디": UserInfo.username,
-                "이름": UserInfo.username,
-                "이메일": UserInfo.email,
-                "한마디": UserInfo.bio,
-                "TMI": UserInfo.tmi,
-                "MBTI": UserInfo.mbti,
-                "최애음식": UserInfo.favorite,
-            })
-        return HttpResponse(data)
-    
-    else:
-        pass
+    if request.method == 'GET':
+        return render(request, 'user/profile.html')
