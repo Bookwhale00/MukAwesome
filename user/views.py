@@ -66,7 +66,7 @@ def logout(request):
     return redirect('/sign-in/')
 
 # 프로필보기
-@login_required # 로그인해야만 볼 수 있다.
+@login_required # 로그인해야 볼 수 있다.
 def profile_view(request):
     """
     GET = 현재 로그인 한 사람 데이터 가져오기
