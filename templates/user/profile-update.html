@@ -4,37 +4,40 @@
 프로필수정
 {% endblock %}
 {% block content %}
-<table>
-    <tr>
-        <td>사용자 아이디</td>
-        <td><input type="text" name="username" value="{{ user.username }}"></td>
-    </tr>
-    <tr>
-        <td>이름</td>
-        <td>{{ user.username }}</td>
-    </tr>
-    <tr>
-        <td>이메일</td>
-        <td>{{ user.email }}</td>
-    </tr>
-    <tr>
-        <td>한마디</td>
-        <td>{{ user.bio }}</td>
-    </tr>
-    <tr>
-        <td>TMI</td>
-        <td>{{ user.tmi }}</td>
-    </tr>
-    <tr>
-        <td>MBTI</td>
-        <td>{{ user.mbti }}</td>
-    </tr>
-    <tr>
-        <td>최애음식</td>
-        <td>{{ user.favorite }}</td>
-    </tr>
-</table>
-<div style="float: left" class="button_box">
-    <button type="submit">수정완료</button>
-</div>
+    <form class="form" method="post" action="/profile/update/">
+    {% csrf_token %}
+        <table>
+            <tr>
+                <td>사용자 아이디</td>
+                <td><input type="text" name="username" value="{{ user.username }}"></td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" name="username" value="{{ user.username }}"></td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td><input type="text" name="email" value="{{ user.email }}"></td>
+            </tr>
+            <tr>
+                <td>한마디</td>
+                <td><input type="text" name="bio" value="{{ user.bio }}"></td>
+            </tr>
+            <tr>
+                <td>TMI</td>
+                <td><input type="text" name="tmi" value="{{ user.tmi }}"></td>
+            </tr>
+            <tr>
+                <td>MBTI</td>
+                <td><input type="text" name="mbti" value="{{ user.mbti }}"></td>
+            </tr>
+            <tr>
+                <td>최애음식</td>
+                <td><input type="text" name="favorite" value="{{ user.favorite }}"></td>
+            </tr>
+        </table>
+        <div style="float: left" class="button_box">
+            <button type="submit">수정완료</button>
+        </div>
+    </form>
 {% endblock %}
