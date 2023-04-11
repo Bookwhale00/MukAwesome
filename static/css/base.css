@@ -4,13 +4,14 @@
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
-    color: black;
+    color: rgb(230, 142, 35);
 }
 
 html,
 body {
     width: 100%;
     height: 100%;
+    background-color: rgba(240, 240, 240, 1);
 }
 
 .nav_bar {
@@ -62,6 +63,7 @@ body {
     background-color: rgba(230, 210, 35, 1);
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
     border-radius: 15px;
+    padding-top: 10px;
 }
 
 .title {
@@ -70,27 +72,62 @@ body {
 }
 
 .form {
-    font-size: 20px;
+    font-size: 23px;
+    font-weight: bold;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
-    height: 80%;
+    width: 80%;
+    height: 88%;
+    padding: 10px;
+}
+
+.inputs {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
 }
 
 .form input {
-    width: 200px;
-    height: 40px;
+    width: 100%;
+    height: 50px;
+    outline: 0px;
+    font-size: 23px;
+    font-weight: bold;
+    color: rgb(230, 181, 35);
+    border: 2px solid rgba(230, 210, 35, 1);
+    border-radius: 10px;
+    padding-left: 15px;
+    box-shadow: rgb(0 0 0 / 3%) 0px 0px 6px 3px;
 }
 
-.signup_form>div:nth-child(7) {
+.button_box {
+    margin-top: 10px;
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: space-between;
 }
 
-.form button {
-    width: 100px;
-    height: 40px;
+.button_box>button {
+    width: 200px;
+    height: 50px;
+    border: 2px solid rgba(230, 210, 35, 1);
+    border-radius: 10px;
+    font-size: 23px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.button_box>button:hover {
+    cursor: pointer;
+    background-color: rgb(230, 142, 35);
+    color: rgba(230, 210, 35, 1);
+}
+
+.button_box>a {
+    margin-top: 10px;
+    font-size: 16px;
 }
