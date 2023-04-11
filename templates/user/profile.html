@@ -4,34 +4,36 @@
 프로필보기
 {% endblock %}
 {% block content %}
-<table>
-    <tr>
-        <td>사용자 아이디</td>
-        <td>{{ user.username }}</td>
-    </tr>
-    <tr>
-        <td>이름</td>
-        <td>{{ user.username }}</td>
-    </tr>
-    <tr>
-        <td>이메일</td>
-        <td>{{ user.email }}</td>
-    </tr>
-    <tr>
-        <td>한마디</td>
-        <td>{{ user.bio }}</td>
-    </tr>
-    <tr>
-        <td>TMI</td>
-        <td>{{ user.tmi }}</td>
-    </tr>
-    <tr>
-        <td>MBTI</td>
-        <td>{{ user.mbti }}</td>
-    </tr>
-    <tr>
-        <td>최애음식</td>
-        <td>{{ user.favorite }}</td>
-    </tr>
-</table>
+<form class="form" method="get" action="/api/profile/">
+    <table>
+        <tr>
+            <td>사용자 아이디</td>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <td>이메일</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td>한마디</td>
+            <td>{{ user.bio }}</td>
+        </tr>
+        <tr>
+            <td>TMI</td>
+            <td>{{ user.tmi }}</td>
+        </tr>
+        <tr>
+            <td>MBTI</td>
+            <td>{{ user.mbti }}</td>
+        </tr>
+        <tr>
+            <td>최애음식</td>
+            <td>{{ user.favorite }}</td>
+        </tr>
+    </table>
+</form>
 {% endblock %}

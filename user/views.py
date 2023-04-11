@@ -51,7 +51,7 @@ def sign_in_view(request):
         if me is not None:
             auth.login(request, me)
             return redirect('/api/profile/')
-            # home이 없어서 임시로 로그인 성공하면 profile페이지로 가도록 해놨습니다!
+            # 임시로 로그인 성공하면 profile페이지로 가도록 해놨습니다!
         else:
             return render(request,'user/signin.html',{'error':'유저이름 혹은 패스워드를 확인 해 주세요'})
     elif request.method == 'GET':
@@ -67,6 +67,7 @@ def logout(request):
     auth.logout(request)
     return redirect('/api/sign-in/')
 
+
 # 프로필보기
 @login_required # 로그인해야 볼 수 있다.
 def profile_view(request):
@@ -79,14 +80,22 @@ def profile_view(request):
 # 프로필 수정
 @login_required
 def profile_update_view(request):
+    """
+    GET = 페이지 들어갔을 때 html 렌더하기
+    POST = 입력하고 수정완료 클릭했을 때 데이터가 유효하면(is_valid) UpdateUserInfo클래스를 통해 DB의 값이 수정되서 들어가고, 아니면 수정페이지가 다시 렌더됨->수정필요!
+    """
     if request.method == 'POST':
         update_profile = UpdateUserInfo(request.POST, instance = request.user)
 
         if update_profile.is_valid():
             update_profile.save()
             messages.success(request, '프로필이 수정되었습니다.')
+            # 데이터는 들어가는데 메세지가 왜 안뜰까? 
             return render(request, 'user/profile.html')
-        else:
+        else: # 유효성 검사 실패했을 때인데, 맞는 에러메시지가 출력되도록 수정 필요함
+              # 지금은 수정페이지가 다시 렌더됨.
+              # 큐... Q 머시기 찾아보기
+              # 정규표현식! mbti는 16개 중에 선택하도록 (드롭다운메뉴)
             update_profile = UpdateUserInfo(instance = request.user)
 
             return render(request, 'user/profile-update.html', {'update_profile':update_profile})
