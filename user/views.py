@@ -37,7 +37,7 @@ def sign_up_view(request):
             else:
                 print(exist_user_name)
                 UserInfo.objects.create_user(username=username, password=password, email=email)
-                return redirect('/sign-in')
+                return redirect('/sign-in/')
             
             
 def sign_in_view(request):
@@ -48,7 +48,7 @@ def sign_in_view(request):
         me = auth.authenticate(request, username=username, password=password)
         if me is not None:
             auth.login(request, me)
-            return redirect('/profile')
+            return redirect('/profile/')
             # home이 없어서 임시로 로그인 성공하면 profile페이지로 가도록 해놨습니다!
         else:
             return render(request,'user/signin.html',{'error':'유저이름 혹은 패스워드를 확인 해 주세요'})
@@ -63,7 +63,7 @@ def sign_in_view(request):
 @login_required
 def logout(request):
     auth.logout(request)
-    return redirect('/sign-in')
+    return redirect('/sign-in/')
 
 # 프로필보기
 @login_required # 로그인해야만 볼 수 있다.
