@@ -36,28 +36,21 @@
     </section>
 </div>
 {% block content %}
-    <form class="form-area" method="post" action='/api/posting/'>
-        {% csrf_token %}
-        <div class="input-group mb-3">
-            <label for="title">제목:</label>
-            <input type="text" class="form-control" id="title" name="title">
-        </div>
 
-        <div class="form-group mt-2 mb-2">
-            <label for="thumbnail">이미지 주소:</label>
-            <input type="url" class="form-control" id="thumbnail" name="thumbnail">
+    <div class="media">
+        <div class="media-bod">
+            <h5 class="mt-0">{{ select_posting.title }}</h5>
         </div>
-
-        <div class="input-group">
-            <label for="input-group-text">내용</label>
-            <textarea class="form-control" id="content" name="content"></textarea>
+        <div class="media-bod">
+            <img src='{{ select_posting.thumbnail }}' style="width: 16rem">
         </div>
-
-        <div style="float: right">
-            <button type="submit" class="btn btn-primary">저장</button>
+        <div class="media-bod">
+            <h5 class="mt-0">{{ select_posting.content }}</h5>
         </div>
-
-    </form>
+        <div style="text-align: right">
+            <span style="font-size: small">{{ select_posting.author.username }}-{{ select_posting.created_at|timesince }} 전</span>
+        </div>
+    </div>
 {% endblock %}
 </body>
 
