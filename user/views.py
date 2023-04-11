@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from .forms import UpdateUserInfo
+from django.contrib import messages
 
 
 def sign_up_view(request):
@@ -35,14 +37,9 @@ def sign_up_view(request):
             # elif exist_user_password:
             #     return render(request, "user/signup.html", {'error':'사용중인 비밀번호 입니다.'})
             else:
-<<<<<<< HEAD
                 print(exist_user_name)
                 UserInfo.objects.create_user(username=username, password=password, email=email)
-                return redirect('/sign-in/')
-=======
-                UserInfo.objects.create_user(username=username, password=password, bio=bio)
-                return redirect('/api/sign-in')
->>>>>>> 095bdc35c36bea9b830b09c2b232276478854d22
+                return redirect('/api/sign-in/')
             
             
 def sign_in_view(request):
@@ -53,7 +50,7 @@ def sign_in_view(request):
         me = auth.authenticate(request, username=username, password=password)
         if me is not None:
             auth.login(request, me)
-            return redirect('/profile/')
+            return redirect('/api/profile/')
             # home이 없어서 임시로 로그인 성공하면 profile페이지로 가도록 해놨습니다!
         else:
             return render(request,'user/signin.html',{'error':'유저이름 혹은 패스워드를 확인 해 주세요'})
@@ -68,7 +65,7 @@ def sign_in_view(request):
 @login_required
 def logout(request):
     auth.logout(request)
-    return redirect('/sign-in/')
+    return redirect('/api/sign-in/')
 
 # 프로필보기
 @login_required # 로그인해야 볼 수 있다.
@@ -78,3 +75,21 @@ def profile_view(request):
     """
     if request.method == 'GET':
         return render(request, 'user/profile.html')
+    
+# 프로필 수정
+@login_required
+def profile_update_view(request):
+    if request.method == 'POST':
+        update_profile = UpdateUserInfo(request.POST, instance = request.user)
+
+        if update_profile.is_valid():
+            update_profile.save()
+            messages.success(request, '프로필이 수정되었습니다.')
+            return render(request, 'user/profile.html')
+        else:
+            update_profile = UpdateUserInfo(instance = request.user)
+
+            return render(request, 'user/profile-update.html', {'update_profile':update_profile})
+        
+    elif request.method == 'GET':
+        return render(request, 'user/profile-update.html')
