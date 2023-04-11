@@ -3,6 +3,7 @@ from .models import UserInfo
 from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 
 def sign_up_view(request):
@@ -16,7 +17,8 @@ def sign_up_view(request):
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
         password2 = request.POST.get('password2', '')
-        bio = request.POST.get('bio', '')
+        email = request.POST.get('email', '')
+        # email 추가
 
         if password != password2:
             return render(request, 'user/signup.html', {'error': '패스워드를 확인 해 주세요!'})
@@ -28,7 +30,7 @@ def sign_up_view(request):
             if exist_user:
                 return render(request, 'user/signup.html', {'error':'사용자가 존재합니다.'})
             else:
-                UserInfo.objects.create_user(username=username, password=password, bio=bio)
+                UserInfo.objects.create_user(username=username, password=password, email=email) # bio->email로 변경
                 return redirect('/sign-in')
             
             
@@ -55,3 +57,19 @@ def sign_in_view(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+# 프로필보기
+@login_required # 로그인해야만 볼 수 있다.
+def profile_view(request):
+    """
+    GET : 현재 로그인한 사람의 프로필을 보여줍니다.
+    PUT : 현재 로그인한 사람의 프로필을 수정합니다. 
+    """
+    profiles = UserInfo.objects.all()
+    data = []
+
+    for profile in profiles:
+        data.append({
+            "사용자 아이디":UserInfo.username,
+        })
+    return HttpResponse(data)
