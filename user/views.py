@@ -18,7 +18,6 @@ def sign_up_view(request):
         password = request.POST.get('password', '')
         password2 = request.POST.get('password2', '')
         email = request.POST.get('email', '')
-        # email 추가
 
         if password != password2:
             return render(request, 'user/signup.html', {'error': '패스워드를 확인 해 주세요!'})
@@ -26,11 +25,18 @@ def sign_up_view(request):
             if username == '' or password == '':
                 return render(request, 'user/signup.html', {'error': '사용자 이름과 패스워드는 필수 값 입니다'})
 
-            exist_user = get_user_model().objects.filter(username=username)
-            if exist_user:
+            exist_user_name = get_user_model().objects.filter(username=username)
+            exist_user_email = get_user_model().objects.filter(email=email)
+            # exist_user_password = get_user_model().objects.filter(password=password)
+            if exist_user_name:
                 return render(request, 'user/signup.html', {'error':'사용자가 존재합니다.'})
+            elif exist_user_email:
+                return render(request, 'user/signup.html', {'error':'사용자가 존재합니다.'})
+            # elif exist_user_password:
+            #     return render(request, "user/signup.html", {'error':'사용중인 비밀번호 입니다.'})
             else:
-                UserInfo.objects.create_user(username=username, password=password, email=email) # bio->email로 변경
+                print(exist_user_name)
+                UserInfo.objects.create_user(username=username, password=password, email=email)
                 return redirect('/sign-in')
             
             
