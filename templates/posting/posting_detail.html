@@ -11,6 +11,9 @@
 </head>
 
 <body>
+{% block content %}
+    <h3>포스팅 디테일</h3>
+{% endblock %}
 <div class="nav_bar">
     <section class="logo"><a href="/">MukAwesome</a></section>
     <section class="sign_box">
@@ -35,7 +38,7 @@
         {% endif %}
     </section>
 </div>
-{% block content %}
+
 
     <div class="media">
         <div class="media-bod">
@@ -51,7 +54,8 @@
             <span style="font-size: small">{{ select_posting.author.username }}-{{ select_posting.created_at|timesince }} 전</span>
         </div>
     </div>
-{% endblock %}
+
+
 </body>
 
 </html>
