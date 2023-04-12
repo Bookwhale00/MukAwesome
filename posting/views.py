@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import PostingModel,UserInfo
+from .models import PostingModel
+from django.contrib.auth import get_user_model
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+
 
 
 
@@ -51,13 +54,14 @@ def posting_detail_view(request,id):
 
         return redirect('/api/posting-detail/'+str(id))
 
-def mypage_view(request,username):
+
+@login_required
+def mypage_list_view(request, id):
     if request.method == 'GET':
-        # mypage = UserInfo.objects.get(id=id)
-
-        # return redirect('/api/mypage'+str(username))
-
-        return render(request, 'posting/mypage.html')
-        # return render(request, 'tweet/tweet_detail.html', {'tweet': my_tweet, 'comment': tweet_comment})
-
+        user = request.user
+        if id == user.id:
+            my_posting = PostingModel.objects.filter(author_id=id).order_by('-created_at')
+            return render(request, 'posting/mypage.html', {'my_posting': my_posting})
+        else:
+            return redirect('/')
 
