@@ -43,16 +43,10 @@ def posting_view(request):
 
 
 
-def posting_detail_view(request,id):
-    if request.method == 'GET':
-        select_posting = PostingModel.objects.get(id=id)
-
-        return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
-
-
-    elif request.method == 'POST':
-
-        return redirect('/api/posting-detail/'+str(id))
+@login_required
+def posting_detail_view(request, id):
+    clicked_posting = PostingModel.objects.get(id=id)
+    return render(request, 'posting/posting_detail.html', {'posting': clicked_posting})
 
 
 @login_required
