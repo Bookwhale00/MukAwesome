@@ -34,9 +34,7 @@ def posting_view(request):
                 return render(request, 'posting/posting.html', {'error': '내용을 작성해주세요!'})
             else:
                 posting_ = PostingModel.objects.create(author=author,title=title,thumbnail=thumbnail, content=content)
-
                 return redirect('/api/posting-detail/'+str(posting_.id))
-
 
 
 def posting_detail_view(request,id):
@@ -52,7 +50,6 @@ def posting_detail_view(request,id):
     elif request.method == 'POST':
 
         return redirect('/api/posting-detail/'+str(id))
-
 
 @login_required
 def mypage_list_view(request, username):
