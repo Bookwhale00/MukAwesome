@@ -33,7 +33,7 @@ def posting_view(request):
             elif content == '':
                 return render(request, 'posting/posting.html', {'error': '내용을 작성해주세요!'})
             else:
-                PostingModel.objects.create(author=author,title=title,thumbnail=thumbnail, content=content)
+                PostingModel.objects.create(author=author,title=title,thumbnail=thumbnail,content=content)
 
                 save_posting = PostingModel.objects.get(id=id)
                 current_posting = save_posting.id
