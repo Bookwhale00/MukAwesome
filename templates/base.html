@@ -13,6 +13,7 @@
 <body>
 <div class="nav_bar">
     <section class="logo"><a href="/">MukAwesome</a></section>
+    <img src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png' style="width: 17rem">
     <section class="sign_box">
         {% if not user.is_authenticated %}
             <ul class="sign_ul">
@@ -25,22 +26,22 @@
             </ul>
         {% else %}
             <ul class="sign_ul">
-                <li>
-                    <a href={% url 'mypage' user.id %}>
+                <div>
+                    <a href=href="/api/mypage/{{ user.username }}">
                     <span class="nav-link">
-                        {{ user.username }} 님 반갑습니다!
+                        {{ user.username }}'s blog
                     </span>
                     </a>
-                </li>
-                <li>
+                </div>
+                <div>
                     <a class="sign_a" href="/api/posting"> 포스팅 </a>
-                </li>
-                <li>
+                </div>
+                <div>
                     <a class="sign_a" href="/api/logout"> LogOut </a>
-                </li>
-                <li>
+                </div>
+                <div>
                     <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-                </li>
+                </div>
             </ul>
         {% endif %}
     </section>
