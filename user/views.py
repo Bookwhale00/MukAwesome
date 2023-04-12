@@ -91,10 +91,7 @@ def profile_update_view(request):
             messages.success(request, '프로필이 수정되었습니다.')
             # 데이터는 들어가는데 메세지가 왜 안뜰까? 
             return render(request, 'user/profile.html')
-        else: # 유효성 검사 실패했을 때인데, 맞는 에러메시지가 출력되도록 수정 필요함
-              # 지금은 수정페이지가 다시 렌더됨.
-              # 큐... Q 머시기 찾아보기
-              # 정규표현식! mbti는 16개 중에 선택하도록 (드롭다운메뉴)
+        else: 
             update_profile = UpdateUserInfo(instance = request.user)
 
             return render(request, 'user/profile-update.html', {'update_profile':update_profile})
