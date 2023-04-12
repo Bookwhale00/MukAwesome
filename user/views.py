@@ -37,7 +37,6 @@ def sign_up_view(request):
             # elif exist_user_password:
             #     return render(request, "user/signup.html", {'error':'사용중인 비밀번호 입니다.'})
             else:
-                print(exist_user_name)
                 UserInfo.objects.create_user(username=username, password=password, email=email)
                 return redirect('/api/sign-in/')
             
@@ -50,8 +49,8 @@ def sign_in_view(request):
         me = auth.authenticate(request, username=username, password=password)
         if me is not None:
             auth.login(request, me)
-            return redirect('/api/profile/')
-            # 임시로 로그인 성공하면 profile페이지로 가도록 해놨습니다!
+            return redirect('/')
+            # 로그인 성공하면 home으로!
         else:
             return render(request,'user/signin.html',{'error':'유저이름 혹은 패스워드를 확인 해 주세요'})
     elif request.method == 'GET':
