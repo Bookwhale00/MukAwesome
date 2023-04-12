@@ -27,7 +27,7 @@ class UpdateUserInfo(UserChangeForm):
     email = forms.EmailField(validators=[validate_email])
 
     # mbti 16개 중에서 선택
-    # mbti = forms.ChoiceField(choices=MBTI_CHOICES)
+    # mbti = models.ChoiceField(choices=MBTI_CHOICES)
 
     class Meta:
         model = UserInfo
