@@ -139,3 +139,95 @@ body {
     font-size: 18px;
     color: rgba(230, 97, 35, 1);
 }
+
+.col {
+    /*width: 320px;*/
+    height: 300px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    /*background-color: yellow;*/
+    text-align: center;
+    margin-top: 40px;
+}
+
+.content2-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
+    /*background: linear-gradient(180deg, #191620, #0c000e);*/
+    background-color: transparent;
+    /*box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);*/
+    /*border-radius: 6px;*/
+    overflow: hidden;
+    text-align: center;
+
+}
+
+.card-img-top {
+    width: 300px;
+    height: 300px;
+    /*margin: 10px auto;*/
+    /*position: absolute;*/
+    /*transform:translate(0%,0%);*/
+
+}
+
+.card-body {
+    width: 100%;
+
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title {
+    font-family: "Quicksand", sans-serif;
+    color: #F4B742;
+
+    height: 50px;
+    font-size: 2rem;
+    text-align: left;
+    background-color: white;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    display: inline-block;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.card-text {
+
+    height: 250px;
+    background-color: white;
+    color: black;
+
+    font-size: 1.4rem;
+    text-align: left;
+
+    display: inline-block;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+
+    padding: 10px 10px;
+
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
