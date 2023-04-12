@@ -8,10 +8,20 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script defer src="{% static 'js/base.js' %}"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-QN99W9CPjMT1V06dqxCYBzV8w//nJfB2+UQz6Uu13HGG99z9JxBV7ZqtY6GTuR8w" crossorigin="anonymous">
 </head>
 
 <body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li> 
+                    <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}" role="alert">
+                    {{ message }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 <div class="nav_bar">
     <section class="logo"><a href="/">MukAwesome</a></section>
     <section class="sign_box">

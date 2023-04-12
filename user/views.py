@@ -82,7 +82,7 @@ def profile_view(request):
 def profile_update_view(request):
     """
     GET = 페이지 들어갔을 때 html 렌더하기
-    POST = 입력하고 수정완료 클릭했을 때 데이터가 유효하면(is_valid) UpdateUserInfo클래스를 통해 DB의 값이 수정되서 들어가고, 아니면 수정페이지가 다시 렌더됨->수정필요!
+    POST = 입력하고 수정완료 클릭했을 때 데이터가 유효하면(is_valid) UpdateUserInfo클래스를 통해 DB의 값이 수정되서 들어가고, 아니면 수정페이지가 다시 렌더됨
     """
     if request.method == 'POST':
         update_profile = UpdateUserInfo(request.POST, instance = request.user)
@@ -90,11 +90,11 @@ def profile_update_view(request):
         if update_profile.is_valid():
             update_profile.save()
             messages.success(request, '프로필이 수정되었습니다.')
-            # 데이터는 들어가는데 메세지가 왜 안뜰까? 
+            # 성공!!@
             return render(request, 'user/profile.html')
         else: 
             update_profile = UpdateUserInfo(instance = request.user)
-
+            messages.error(request, '이메일 형식이 잘못되었습니다.')
             return render(request, 'user/profile-update.html', {'update_profile':update_profile})
         
     elif request.method == 'GET':

@@ -4,6 +4,7 @@
 프로필수정
 {% endblock %}
 {% block content %}
+    
     <form class="form" method="post" action="/api/profile/update/">
     {% csrf_token %}
         <table>
