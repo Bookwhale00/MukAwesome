@@ -39,6 +39,7 @@ def sign_up_view(request):
             else:
                 UserInfo.objects.create_user(username=username, password=password, email=email)
                 return redirect('/api/sign-in')
+
             
             
 def sign_in_view(request):
