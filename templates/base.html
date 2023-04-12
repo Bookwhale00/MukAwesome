@@ -11,20 +11,22 @@
 </head>
 
 <body>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li> 
-                    <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}" role="alert">
-                    {{ message }}
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li>
+                <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}
+                " role="alert">
+                {{ message }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <div class="nav_bar">
     <section class="logo"><a href="/">MukAwesome</a></section>
-    <img src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png' style="width: 17rem">
+    <img src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'
+         style="width: 17rem">
     <section class="sign_box">
         {% if not user.is_authenticated %}
             <ul class="sign_ul">
@@ -37,25 +39,25 @@
             </ul>
         {% else %}
             <ul class="sign_ul">
-                <div>
-                    <a href=href="/api/mypage/{{ user.username }}">
+                <li>
+                    <a href="/api/mypage/{{ user.username }}">
                     <span class="nav-link">
-                        {{ user.username }}'s blog
+                        {{ user.username }} 님 반갑습니다!
                     </span>
                     </a>
-                </div>
-                <div>
+                </li>
+                <li>
                     <a class="sign_a" href="/api/posting"> 포스팅 </a>
-                </div>
-                <div>
+                </li>
+                <li>
                     <a class="sign_a" href="/api/logout"> LogOut </a>
-               </li>
+                </li>
                 <li>
                     <a class="sign_a" href="/api/profile"> 프로필보기 </a>
                 </li>
                 <li>
                     <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-                </div>
+                </li>
             </ul>
         {% endif %}
     </section>

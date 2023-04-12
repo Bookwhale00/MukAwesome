@@ -8,3 +8,4 @@ urlpatterns = [
     path('api/posting-detail/<int:id>', views.posting_detail_view, name='posting_detail'),
     path('api/mypage/<str:username>', views.mypage_list_view, name='mypage'),
 ]
+
