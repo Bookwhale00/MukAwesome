@@ -43,7 +43,7 @@ def posting_view(request):
 @login_required
 def posting_detail_view(request, id):
     clicked_posting = PostingModel.objects.get(id=id)
-    return render(request, 'posting/posting_detail.html', {'posting': clicked_posting})
+    return render(request, 'posting/posting_detail.html', {'select_posting': clicked_posting})
 
 
 @login_required
