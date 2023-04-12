@@ -3,6 +3,30 @@
 {% block title %}
 home
 {% endblock %}
+
 {% block content %}
-    <h3>home</h3>
+<div class="content2-wrap">
+    <div class="content2-container">
+        <div id="card-list"
+            class="row row-cols-xm-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-2">
+            {% for ap in all_posting %}
+            <div class="col">
+                <div class="card">
+                    <div class="container" onclick = "location.href = '/api/posting-detail/{{ ap.id }}';" style = "cursor: pointer;">
+                        <div class="cell-a">
+                            <img src={{ ap.thumbnail }} class="card-img-top" alt="..." />
+                        </div>
+                        <div class="cell-b">
+                            <div class="card-body">
+                                <p class="card-title">{{ ap.title }}</p>
+                                <p class="card-text">{{ ap.content }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

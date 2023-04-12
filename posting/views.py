@@ -9,8 +9,8 @@ from django.urls import reverse
 
 
 def home_view(request):
-
-        return render(request, 'posting/home.html')
+    all_posting = PostingModel.objects.all().order_by('-created_at')
+    return render(request, 'posting/home.html', {'all_posting': all_posting})
 
 
 def posting_view(request):
@@ -55,4 +55,3 @@ def mypage_list_view(request, id):
             return render(request, 'posting/mypage.html', {'my_posting': my_posting})
         else:
             return redirect('/')
-
