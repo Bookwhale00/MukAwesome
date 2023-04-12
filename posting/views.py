@@ -50,8 +50,8 @@ def posting_detail_view(request, id):
 def mypage_list_view(request, id):
     if request.method == 'GET':
         user = request.user
-        if id == user.id:
-            my_posting = PostingModel.objects.filter(author_id=id).order_by('-created_at')
+        if id == user.username:
+            my_posting = PostingModel.objects.filter(author_id=user.id).order_by('-created_at')
             return render(request, 'posting/mypage.html', {'my_posting': my_posting})
         else:
             return redirect('/')

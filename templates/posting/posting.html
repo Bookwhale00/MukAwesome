@@ -26,7 +26,7 @@
         {% else %}
             <ul class="sign_ul">
                 <li>
-                    <a class="sign_a" href="/api/mypage/<str:username>"> 마이페이지 </a>
+                    <a class="sign_a" href="/api/mypage/{{user.username}}"> 마이페이지 </a>
                 </li>
                 <li>
                     <a class="sign_a" href="/api/logout"> LogOut </a>
