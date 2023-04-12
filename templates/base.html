@@ -11,6 +11,17 @@
 </head>
 
 <body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li> 
+                    <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}" role="alert">
+                    {{ message }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 <div class="nav_bar">
     <section class="logo"><a href="/">MukAwesome</a></section>
     <section class="sign_box">
@@ -37,6 +48,9 @@
                 </li>
                 <li>
                     <a class="sign_a" href="/api/logout"> LogOut </a>
+                </li>
+                <li>
+                    <a class="sign_a" href="/api/profile"> 프로필보기 </a>
                 </li>
                 <li>
                     <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
