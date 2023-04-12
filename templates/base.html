@@ -26,7 +26,7 @@
         {% else %}
             <ul class="sign_ul">
                 <li>
-                    <a href={% url 'mypage' user.username %}>
+                    <a href="/api/mypage/{{user.username}}">
                     <span class="nav-link">
                         {{ user.username }} 님 반갑습니다!
                     </span>
