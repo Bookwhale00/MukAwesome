@@ -61,10 +61,8 @@ def mypage_list_view(request, username):
             return render(request, 'posting/mypage.html', {'my_posting': my_posting})
         else:
             return redirect('/')
-
-@login_required
-def mypage_edit_view(request, id):
-    posting_edit = PostingModel.objects.get(id=id)
+def mypage_edit_view(request, pk):
+    posting_edit = PostingModel.objects.get(id=pk)
     if request.method == "POST":
         title = request.POST.get("title_edit","")
         thumbnail = request.POST.get("thumbnail_edit","")
@@ -78,13 +76,11 @@ def mypage_edit_view(request, id):
             posting_edit.thumbnail = thumbnail
             posting_edit.content = content
             posting_edit.save()
-            _posting_= posting_edit
-            return redirect('/api/posting-detail/'+str(_posting_.id))
+            return redirect('/api/posting-detail/'+str(pk))
+    
     elif request.method == "GET":
         user = request.user.is_authenticated
-
         if user:
             return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
         else:
             return render(request, 'user/signin.html')
-

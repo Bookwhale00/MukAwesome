@@ -46,7 +46,7 @@
 </div>
 {% block content %}
     <div class='posting-body'>
-        <form class="form-area" method="post" action='/api/mypage/edit/{{ posting_edit.id }}'>
+         <form class="form-area" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">
             {% csrf_token %}
 
             <div class='posting-input-group'>
@@ -58,8 +58,8 @@
 
                     {# section class를 변경하면 스타일이 바뀜! #}
                     <section class="form-floating">
-                        <input type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
-                               name="thumbnail">{{ posting_edit.thumbnail }}>
+                        <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
+                               name="thumbnail">{{ posting_edit.thumbnail }}</textarea>
                         <label for="floatingthumbnail">이미지 URL</label>
                     </section>
                     <hr>
@@ -79,3 +79,4 @@
 </body>
 
 </html>
+

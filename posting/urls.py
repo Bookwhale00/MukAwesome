@@ -7,7 +7,7 @@ urlpatterns = [
     path('api/posting/', views.posting_view, name='posting'),
     path('api/posting-detail/<int:id>', views.posting_detail_view, name='posting_detail'),
     path('api/mypage/<str:username>', views.mypage_list_view, name='mypage'),
-    path('api/mypage/edit/<int:id>', views.mypage_edit_view, name='posting_edit'),
+    path('api/mypage/edit/<int:pk>', views.mypage_edit_view, name='posting_edit'),
 
 ]
 
