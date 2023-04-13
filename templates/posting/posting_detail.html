@@ -92,37 +92,6 @@
         </div>
     </div>
     {% endblock %}
-    <div class="media-bod">
-        <h5 class="mt-0">{{ select_posting.content }}</h5>
-    </div>
-    <div style="text-align: right">
-        <span style="font-size: small">
-            <a href="/api/mypage/{{ select_posting.author.username }}"> {{ select_posting.author.username }} </a>-{{
-            select_posting.created_at|timesince }} 전
-        </span>
-    </div>
-    <a href="/api/mypage/edit/{{  select_posting.id }}">수정하기</a>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="/api/posting-detail/{{  select_posting.id }}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="/api/posting-detail/1">1</a></li>
-            <li class="page-item"><a class="page-link" href="/api/posting-detail/2">2</a></li>
-            <li class="page-item"><a class="page-link" href="/api/posting-detail/3">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="/api/posting-detail/{{  select_posting.id }}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    </div>
-    </div>
-    {% endblock %}
-
 </body>
 
 </html>
