@@ -51,9 +51,16 @@ def posting_detail_view(request, id):
 
 @login_required
 def mypage_list_view(request, username):
-    author_wanted = UserInfo.objects.get(username=username)
-    my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
-    return render(request, 'posting/mypage.html', {'my_posting': my_posting})
+    if request.method == 'GET':
+        # select_posting = PostingModel.objects.get(id=id)
+        # default_thumbnail = 'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png'
+        #
+        # if select_posting == '':
+        #     select_posting.thumbnail = default_thumbnail
+
+        author_wanted = UserInfo.objects.get(username=username)
+        my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
+        return render(request, 'posting/mypage.html', {'my_posting': my_posting})
 
 
 @login_required

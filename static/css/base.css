@@ -26,13 +26,13 @@ body {
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
 }
 
-.logo > a> img {
+.logo > a > img {
     z-index: 2;
     position: relative;
     width: 400px;
     height: 300px;
     margin: 100px 0px 0px 0px;
-    padding:0px 0px;
+    padding: 0px 0px;
     /*background-color: white;*/
 
 }
@@ -50,7 +50,7 @@ body {
     width: 100%;
 }
 
-.sign_ul>a {
+.sign_ul > a {
     display: flex;
     font-size: 23px;
     font-weight: bold;
@@ -115,7 +115,7 @@ body {
     align-items: center;
 }
 
-.button_box>button {
+.button_box > button {
     width: 200px;
     height: 50px;
     border: 2px solid rgba(230, 184, 35, 1);
@@ -125,17 +125,17 @@ body {
     transition: 0.3s;
 }
 
-.button_box>button:hover {
+.button_box > button:hover {
     cursor: pointer;
     background-color: rgba(143, 205, 222, 1);
 }
 
-.button_box>a {
+.button_box > a {
     margin-top: 10px;
     font-size: 16px;
 }
 
-.button_box>a:hover {
+.button_box > a:hover {
     color: rgba(230, 97, 35, 1);
 }
 
@@ -237,8 +237,8 @@ body {
     grid-template-columns: 300px 1fr;
 }
 
-.sign_ul{
- margin: auto 30px auto auto;
+.sign_ul {
+    margin: auto 30px auto auto;
 }
 
 /*posting.css*/
@@ -261,11 +261,11 @@ body {
     padding-top: 50px;
 }
 
-.form-floating{
+.form-floating {
     padding-top: 5px;
 }
 
-.posting-output-group{
+.posting-output-group {
     z-index: 3;
     position: relative;
     width: 1000px;
@@ -274,32 +274,44 @@ body {
     justify-content: center;
     align-items: center;
 }
-.posting-title>h5{
+
+.posting-title > h5 {
     font-size: 40px;
     font-weight: bold;
     width: 1000px;
 }
 
-.created-time{
+.created-time {
     width: 1000px;
     padding-top: 30px;
 }
 
-.edit-hrefs{
+.edit-hrefs {
     float: right;
 }
 
-.postig-img>img{
-   margin: 40px auto;
+.postig-img > img {
+    margin: 40px auto;
 
 }
 
-.posting-content{
+.posting-content {
     width: 1000px;
 }
-.pagination{
+
+.pagination {
     margin: 20px auto 20px auto;
 }
-.page-item{
+
+.page-item {
     margin: 20px auto 20px auto;
 }
+
+.edit-href {
+    color: gray;
+}
+
+/*a {*/
+/*    text-decoration: none !important*/
+/*}*/
+
