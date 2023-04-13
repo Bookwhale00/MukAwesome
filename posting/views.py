@@ -62,7 +62,6 @@ def mypage_list_view(request, username):
         else:
             return redirect('/')
 
-
 @login_required
 def mypage_edit_view(request, pk):
     posting_edit = PostingModel.objects.get(id=pk)
@@ -70,7 +69,6 @@ def mypage_edit_view(request, pk):
         title = request.POST.get("title_edit","")
         thumbnail = request.POST.get("thumbnail_edit","")
         content = request.POST.get("content_edit","")
-    
         if title == '':
             return render(request, 'posting/edit.html', {'error': '제목을 작성해주세요!'})
         elif content == '':
