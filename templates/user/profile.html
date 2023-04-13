@@ -4,60 +4,23 @@
 프로필보기
 {% endblock %}
 {% block content %}
-<!-- bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-<!-- bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-crossorigin="anonymous"></script>
+
     <div class='posting-body'>
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li>
-                <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}
-                " role="alert">
-                {{ message }}
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
+        
     <form class="form" method="get" action="/api/profile/">
-        <table>
-            {% comment %} <tr>
-                <td>사용자아이디</td>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <td>이메일</td>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <td>한마디</td>
-                <td>{{ user.bio }}</td>
-            </tr>
-            <tr>
-                <td>TMI</td>
-                <td>{{ user.tmi }}</td>
-            </tr>
-            <tr>
-                <td>MBTI</td>
-                <td>{{ user.mbti }}</td>
-            </tr>
-            <tr>
-                <td>최애음식</td>
-                <td>{{ user.favorite }}</td>
-            </tr> 원래 있던 기본 폼 {% endcomment %} 
-            {% comment %} <ul class="list-group list-group-flush">
-                <li class="list-group-item">사용자아이디 : {{ user.username }}</li>
-                <li class="list-group-item">Email : {{ user.email }}</li>
-                <li class="list-group-item">한마디 : {{ user.bio }}</li>
-                <li class="list-group-item">TMI : {{ user.tmi }}</li>
-                <li class="list-group-item">MBTI : {{ user.mbti }}</li>
-                <li class="list-group-item">최애음식 : {{ user.favorite }}</li>
-            </ul> {% endcomment %}
+        <!-- 메시지 위치 수정-->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>
+                        <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}
+                        " role="alert">
+                        {{ message }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
             <div class="card" style="width: 30rem;">
                 {% if user.img %}
                     <img src="{{ user.img }}" class="card-img-top" alt="">
@@ -66,7 +29,7 @@ crossorigin="anonymous"></script>
                 {% endif %}
                 <div class="card-body" >
                   <h5 class="card-title">{{ user.username }}</h5>
-                  <p class="card-text">{{ user.bio }}</p>
+                  <p class="card-text">나의 한마디 : {{ user.bio }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Email : {{ user.email }}</li>
@@ -75,7 +38,5 @@ crossorigin="anonymous"></script>
                   <li class="list-group-item">최애음식 : {{ user.favorite }}</li>
                 </ul>
             </div>
-        </table>
-
     </form>
 {% endblock %}

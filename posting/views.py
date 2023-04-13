@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import PostingModel
+from .models import PostingModel, UserInfo
 from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -34,7 +34,6 @@ def posting_view(request):
             posting_ = PostingModel.objects.create(author=author, title=title, thumbnail=thumbnail, content=content)
             return redirect('/api/posting-detail/' + str(posting_.id))
 
-
 def posting_detail_view(request, id):
     if request.method == 'GET':
         select_posting = PostingModel.objects.get(id=id)
@@ -52,14 +51,9 @@ def posting_detail_view(request, id):
 
 @login_required
 def mypage_list_view(request, username):
-    if request.method == 'GET':
-        user = request.user
-
-        if username == user.username:
-            my_posting = PostingModel.objects.filter(author=user).order_by('-created_at')
-            return render(request, 'posting/mypage.html', {'my_posting': my_posting})
-        else:
-            return redirect('/')
+    author_wanted = UserInfo.objects.get(username=username)
+    my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
+    return render(request, 'posting/mypage.html', {'my_posting': my_posting})
 
 
 @login_required
@@ -86,5 +80,3 @@ def mypage_edit_view(request,pk):
             return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
         else:
             return render(request, 'user/signin.html')
-
-
