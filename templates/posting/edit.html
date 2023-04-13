@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+게시글 수정
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="wrap">
+        <h2 class="title-center"> 게시글 수정 </h2>
+        <form class="form-area" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">
+            {% csrf_token %}
+            <div class="form-group mt-2 mb-2">
+                <label for="title_edit">title</label>
+                <input type="text" class="form-control" id="title_edit" name="title_edit"
+                    placeholder="{{ posting_edit.title }}">
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="thumbnail_edit">thumbnail</label>
+                <input type="text" class="form-control" id="image_edit" name="image_edit"
+                    placeholder="{{ posting_edit.thumbnail }}">
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="content_edit">content</label>
+                <input type="text" class="form-control" id="content_edit" name="content_edit"
+                    placeholder="{{ posting_edit.content }}">
+            </div>
+            <hr>
+            <div style="float: right">
+                <button type="submit" class="btn btn-primary">수정하기</button>
+                <a href="/" class="btn btn-secondary">Home</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

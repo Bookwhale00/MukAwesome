@@ -33,25 +33,59 @@ def posting_view(request):
             elif content == '':
                 return render(request, 'posting/posting.html', {'error': '내용을 작성해주세요!'})
             else:
-                posting_ = PostingModel.objects.create(author=author,title=title,thumbnail=thumbnail,content=content)
-
+                posting_ = PostingModel.objects.create(author=author,title=title,thumbnail=thumbnail, content=content)
                 return redirect('/api/posting-detail/'+str(posting_.id))
 
 
+def posting_detail_view(request,id):
+    if request.method == 'GET':
+        select_posting = PostingModel.objects.get(id=id)
+        default_thumbnail = 'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png'
 
+        if select_posting.thumbnail == '':
+            select_posting.thumbnail = default_thumbnail
+
+        return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
+
+    elif request.method == 'POST':
+
+        return redirect('/api/posting-detail/'+str(id))
 
 @login_required
-def posting_detail_view(request, id):
-    clicked_posting = PostingModel.objects.get(id=id)
-    return render(request, 'posting/posting_detail.html', {'select_posting': clicked_posting})
-
-
-@login_required
-def mypage_list_view(request, id):
+def mypage_list_view(request, username):
     if request.method == 'GET':
         user = request.user
-        if id == user.username:
-            my_posting = PostingModel.objects.filter(author_id=user.id).order_by('-created_at')
+
+        if username == user.username:
+            my_posting = PostingModel.objects.filter(author=user).order_by('-created_at')
             return render(request, 'posting/mypage.html', {'my_posting': my_posting})
         else:
             return redirect('/')
+
+
+@login_required
+def mypage_edit_view(request, pk):
+    posting_edit = PostingModel.objects.get(id=pk)
+    if request.method == "POST":
+        title = request.POST.get("title_edit","")
+        thumbnail = request.POST.get("thumbnail_edit","")
+        content = request.POST.get("content_edit","")
+    
+        if title == '':
+            return render(request, 'posting/edit.html', {'error': '제목을 작성해주세요!'})
+        elif content == '':
+            return render(request, 'posting/edit.html', {'error': '내용을 작성해주세요!'})
+        else:
+            posting_edit.title = title
+            posting_edit.thumbnail = thumbnail
+            posting_edit.content = content
+            posting_edit.save()
+            return redirect('/api/posting-detail/'+str(pk))
+    
+    elif request.method == "GET":
+        user = request.user.is_authenticated
+        if user:
+            return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
+        else:
+            return render(request, 'user/signin.html')
+

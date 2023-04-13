@@ -16,6 +16,8 @@
 {% endblock %}
 <div class="nav_bar">
     <section class="logo"><a href="/">MukAwesome</a></section>
+    <img src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'
+         style="width: 17rem">
     <section class="sign_box">
         {% if not user.is_authenticated %}
             <ul class="sign_ul">
@@ -29,7 +31,7 @@
         {% else %}
             <ul class="sign_ul">
                 <li>
-                    <a class="sign_a" href="/api/mypage/{{user.username}}"> 마이페이지 </a>
+                    <a class="sign_a" href="/api/mypage/{{ user.username }}"> 마이페이지 </a>
                 </li>
                 <li>
                     <a class="sign_a" href="/api/logout"> LogOut </a>
@@ -40,20 +42,21 @@
 </div>
 
 
-    <div class="media">
-        <div class="media-bod">
-            <h5 class="mt-0">{{ select_posting.title }}</h5>
-        </div>
-        <div class="media-bod">
-            <img src='{{ select_posting.thumbnail }}' style="width: 16rem">
-        </div>
-        <div class="media-bod">
-            <h5 class="mt-0">{{ select_posting.content }}</h5>
-        </div>
-        <div style="text-align: right">
-            <span style="font-size: small">{{ select_posting.author.username }}-{{ select_posting.created_at|timesince }} 전</span>
-        </div>
+<div class="media">
+    <div class="media-bod">
+        <h5 class="mt-0">{{ select_posting.title }}</h5>
     </div>
+    <div class="media-bod">
+        <img src="{{ select_posting.thumbnail }}" style="width: 16rem">
+    </div>
+
+    <div class="media-bod">
+        <h5 class="mt-0">{{ select_posting.content }}</h5>
+    </div>
+    <div style="text-align: right">
+        <span style="font-size: small">{{ select_posting.author.username }}-{{ select_posting.created_at|timesince }} 전</span>
+    </div>
+</div>
 
 
 </body>
