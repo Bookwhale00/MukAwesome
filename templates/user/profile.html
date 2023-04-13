@@ -12,6 +12,18 @@ integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwr
 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 crossorigin="anonymous"></script> {% endcomment %}
 
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li>
+                <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}
+                " role="alert">
+                {{ message }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
     <form class="form" method="get" action="/api/profile/">
         <table>
             {% comment %} <tr>
