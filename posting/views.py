@@ -9,8 +9,8 @@ from django.urls import reverse
 
 
 def home_view(request):
-
-        return render(request, 'posting/home.html')
+    all_posting = PostingModel.objects.all().order_by('-created_at')
+    return render(request, 'posting/home.html', {'all_posting': all_posting})
 
 
 def posting_view(request):
@@ -62,6 +62,7 @@ def mypage_list_view(request, username):
         else:
             return redirect('/')
 
+
 @login_required
 def mypage_edit_view(request, pk):
     posting_edit = PostingModel.objects.get(id=pk)
@@ -87,3 +88,4 @@ def mypage_edit_view(request, pk):
             return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
         else:
             return render(request, 'user/signin.html')
+
