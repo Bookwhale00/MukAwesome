@@ -31,4 +31,4 @@ class UpdateUserInfo(UserChangeForm):
 
     class Meta:
         model = UserInfo
-        fields = ('username', 'email', 'bio', 'tmi', 'mbti', 'favorite')
+        fields = ('img','username', 'email', 'bio', 'tmi', 'mbti', 'favorite')

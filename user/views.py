@@ -98,4 +98,5 @@ def profile_update_view(request):
             return render(request, 'user/profile-update.html', {'update_profile':update_profile})
         
     elif request.method == 'GET':
+        update_profile = UpdateUserInfo(instance = request.user)
         return render(request, 'user/profile-update.html')
