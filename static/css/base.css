@@ -271,24 +271,35 @@ body {
     width: 1000px;
     padding-top: 80px;
     margin: 30px auto 20px auto;
-    display: flex;
     justify-content: center;
-    flex-flow: column;
     align-items: center;
-    text-align: center;
-    /*background-color: blue;*/
 }
 .posting-title>h5{
-    text-align: center;
     font-size: 40px;
     font-weight: bold;
-
+    width: 1000px;
 }
 
 .created-time{
+    width: 1000px;
+    padding-top: 30px;
+}
+
+.edit-hrefs{
+    float: right;
+}
+
+.postig-img>img{
+   margin: 40px auto;
 
 }
 
-.postig-img{
-
+.posting-content{
+    width: 1000px;
+}
+.pagination{
+    margin: 20px auto 20px auto;
+}
+.page-item{
+    margin: 20px auto 20px auto;
 }
