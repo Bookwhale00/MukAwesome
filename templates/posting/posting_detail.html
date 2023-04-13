@@ -67,7 +67,9 @@
         <h5 class="mt-0">{{ select_posting.content }}</h5>
     </div>
     <div style="text-align: right">
-        <span style="font-size: small">{{ select_posting.author.username }}-{{ select_posting.created_at|timesince }} 전</span>
+        <span style="font-size: small">
+            <a href="/api/mypage/{{ select_posting.author.username }}"> {{ select_posting.author.username }} </a>-{{ select_posting.created_at|timesince }} 전
+        </span>
     </div>
     <a href="/api/mypage/edit/{{  select_posting.id }}">수정하기</a>
     <nav aria-label="Page navigation example">
