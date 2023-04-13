@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import PostingModel
+from .models import PostingModel, UserInfo
 from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -53,14 +53,9 @@ def posting_detail_view(request,id):
 
 @login_required
 def mypage_list_view(request, username):
-    if request.method == 'GET':
-        user = request.user
-
-        if username == user.username:
-            my_posting = PostingModel.objects.filter(author=user).order_by('-created_at')
-            return render(request, 'posting/mypage.html', {'my_posting': my_posting})
-        else:
-            return redirect('/')
+    author_wanted = UserInfo.objects.get(username=username)
+    my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
+    return render(request, 'posting/mypage.html', {'my_posting': my_posting})
 
 
 @login_required
