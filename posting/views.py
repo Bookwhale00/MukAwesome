@@ -61,7 +61,6 @@ def mypage_list_view(request, username):
     my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
     return render(request, 'posting/mypage.html', {'my_posting': my_posting})
 
-
 @login_required
 def mypage_edit_view(request, pk):
     posting_edit = PostingModel.objects.get(id=pk)
@@ -69,7 +68,6 @@ def mypage_edit_view(request, pk):
         title = request.POST.get("title_edit","")
         thumbnail = request.POST.get("thumbnail_edit","")
         content = request.POST.get("content_edit","")
-    
         if title == '':
             return render(request, 'posting/edit.html', {'error': '제목을 작성해주세요!'})
         elif content == '':
