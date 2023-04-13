@@ -235,8 +235,9 @@ body {
 }
 
 .sign_ul{
-
+ margin: auto 30px auto auto;
 }
+
 /*posting.css*/
 .posting-body {
 

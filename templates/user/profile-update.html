@@ -4,7 +4,7 @@
 프로필수정
 {% endblock %}
 {% block content %}
-    
+    <div class='posting-body'>
     <form class="form" method="post" action="/api/profile/update/">
     {% csrf_token %}
         <table>
@@ -37,4 +37,5 @@
             <button type="submit">수정완료</button>
         </div>
     </form>
+    </div>
 {% endblock %}
