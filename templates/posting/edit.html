@@ -46,27 +46,27 @@
 </div>
 {% block content %}
     <div class='posting-body'>
-        <form class="form-area" method="post" action='/api/posting/'>
+        <form class="form-area" method="post" action='/api/mypage/edit/{{ posting_edit.id }}'>
             {% csrf_token %}
 
             <div class='posting-input-group'>
                 <div class=posting-top>
                     <section class="form-floating">
-                        <textarea class="form-control" placeholder="title" id="title" name="title"></textarea>
+                        <textarea class="form-control" placeholder="title" id="title" name="title">{{ posting_edit.title }}</textarea>
                         <label for="floatingtitle">제목</label>
                     </section>
 
                     {# section class를 변경하면 스타일이 바뀜! #}
                     <section class="form-floating">
                         <input type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
-                               name="thumbnail">
+                               name="thumbnail">{{ posting_edit.thumbnail }}>
                         <label for="floatingthumbnail">이미지 URL</label>
                     </section>
                     <hr>
                 </div>
                 <section class="input-group">
                     <textarea class="form-control" placeholder="내용을 입력해주세요..." id="content"
-                              name="content" style="height: 400px"></textarea>
+                              name="content" style="height: 400px">{{ posting_edit.content }}</textarea>
                 </section>
                 <hr>
             <section style="float: right">

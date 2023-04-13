@@ -62,3 +62,29 @@ def mypage_list_view(request, username):
         else:
             return redirect('/')
 
+@login_required
+def mypage_edit_view(request, id):
+    posting_edit = PostingModel.objects.get(id=id)
+    if request.method == "POST":
+        title = request.POST.get("title_edit","")
+        thumbnail = request.POST.get("thumbnail_edit","")
+        content = request.POST.get("content_edit","")
+        if title == '':
+            return render(request, 'posting/edit.html', {'error': '제목을 작성해주세요!'})
+        elif content == '':
+            return render(request, 'posting/edit.html', {'error': '내용을 작성해주세요!'})
+        else:
+            posting_edit.title = title
+            posting_edit.thumbnail = thumbnail
+            posting_edit.content = content
+            posting_edit.save()
+            _posting_= posting_edit
+            return redirect('/api/posting-detail/'+str(_posting_.id))
+    elif request.method == "GET":
+        user = request.user.is_authenticated
+
+        if user:
+            return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
+        else:
+            return render(request, 'user/signin.html')
+
