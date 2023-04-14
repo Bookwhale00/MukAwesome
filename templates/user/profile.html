@@ -3,10 +3,12 @@
 {% block title %}
 프로필보기
 {% endblock %}
+
 {% block content %}
     <div class='posting-body'>
         
     <form class="form" method="get" action="/api/profile/">
+    {% csrf_token %}
         <!-- 메시지 위치 수정-->
         {% if messages %}
             <ul class="messages">
