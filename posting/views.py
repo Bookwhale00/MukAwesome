@@ -48,9 +48,8 @@ def posting_detail_view(request, id):
 
         return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
 
-@login_required
+
 def mypage_list_view(request, username):
-    if request.method == 'GET':
         author_wanted = UserInfo.objects.get(username=username)
         my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
         return render(request, 'posting/mypage.html', {'my_posting': my_posting})
