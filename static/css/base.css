@@ -41,7 +41,6 @@ body {
 }
 .logo > a > img {
     z-index: 2;
-    position: absolute;
     position: relative;
     background-size: cover;
 
