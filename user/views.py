@@ -94,9 +94,11 @@ def profile_update_view(request):
             return render(request, 'user/profile.html')
         else: 
             update_profile = UpdateUserInfo(instance = request.user)
-            messages.error(request, '존재하지 않는 도메인 주소입니다.')
+            messages.error(request, '잘못된 입력입니다.')
             return render(request, 'user/profile-update.html', {'update_profile':update_profile})
         
     elif request.method == 'GET':
         update_profile = UpdateUserInfo(instance = request.user)
         return render(request, 'user/profile-update.html')
+    
+# 계정 삭제 
