@@ -33,19 +33,22 @@ body {
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
     z-index: 100;
 }
-
-/*.logo {*/
-/*    width: 170px;*/
-/*    height: 100%;*/
-/*}*/
-
+.log{
+    background-color: black;
+    width: 400px;
+    height: 300px;
+    margin: 1000px 0px 0px 0px;
+}
 .logo > a > img {
     z-index: 2;
+    position: absolute;
     position: relative;
+    background-size: cover;
 
     width: 400px;
     height: 300px;
     margin: 100px 0px 0px 0px;
+    background-color: black;
     /*추가*/
 }
 
@@ -294,6 +297,7 @@ body {
     grid-template-columns: 300px 1fr;
 }
 .middle {
+    z-index: 3;
     position: relative;
     width: 95%;
     height: 100%;
@@ -302,6 +306,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    background-color: white;
 }
 
 .middle2 {
@@ -518,6 +523,7 @@ body {
     height: 90%;
     border-radius: 15px;
     padding-top: 50px;
+
 }
 
 .form-floating {
@@ -532,6 +538,7 @@ body {
     margin: 30px auto 20px auto;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .posting-title > h5 {
