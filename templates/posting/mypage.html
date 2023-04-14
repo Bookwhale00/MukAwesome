@@ -1,33 +1,59 @@
 {% extends 'base.html' %}
 
 {% block title %}
-마이페이지
+my posting
 {% endblock %}
 {% block content %}
-    <div class='posting-body'>
-<div class="content2-wrap">
-    <div class="content2-container">
-        <div id="card-list"
-            class="row row-cols-xm-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-2">
-            {% for mp in my_posting %}
-            <div class="col">
-                <div class="card">
-                    <div class="container" onclick = "location.href = '/api/posting-detail/{{ mp.id }}';" style = "cursor: pointer;">
-                        <div class="cell-a">
-                            <img src={{ mp.thumbnail }} class="card-img-top" alt="..." />
-                        </div>
-                        <div class="cell-b">
-                            <div class="card-body">
-                                <p class="card-title">{{ mp.title }}</p>
-                                <p class="card-text">{{ mp.content }}</p>
-                            </div>
-                        </div>
+    <section class="middle">
+    <div class="middle2">
+        <div class="sub_title">
+            <p>내 포스팅</p>
+        </div>
+        <span class="part"></span>
+        <div class="list_box">
+            <ul class="list1" id="list_box1">
+                {% for mp in my_posting %}
+                <li>
+                    <div class="img_box_div">
+                        <a href='/api/posting-detail/{{ mp.id }}' class="img_box">
+                            <img src="{{ mp.thumbnail }}" class="card-img-top" alt="">
+                        </a>
                     </div>
-                </div>
-            </div>
-            {% endfor %}
+                    <div class="title_box_div">
+                        <a href="/api/posting-detail/{{ mp.id }}" class="text_box">
+                            <p class="res_name">{{ mp.title }}</p>
+                        </a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
-</div>
-    </div>
+</section>
+{#    <div class='posting-body'>#}
+{#<div class="content2-wrap">#}
+{#    <div class="content2-container">#}
+{#        <div id="card-list"#}
+{#            class="row row-cols-xm-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-2">#}
+{#            {% for mp in my_posting %}#}
+{#            <div class="col">#}
+{#                <div class="card">#}
+{#                    <div class="container" onclick = "location.href = '/api/posting-detail/{{ mp.id }}';" style = "cursor: pointer;">#}
+{#                        <div class="cell-a">#}
+{#                            <img src={{ mp.thumbnail }} class="card-img-top" alt="..." />#}
+{#                        </div>#}
+{#                        <div class="cell-b">#}
+{#                            <div class="card-body">#}
+{#                                <p class="card-title">{{ mp.title }}</p>#}
+{#                                <p class="card-text">{{ mp.content }}</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#    </div>#}
 {% endblock %}

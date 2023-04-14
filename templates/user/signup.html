@@ -4,37 +4,44 @@
 회원가입
 {% endblock %}
 {% block content %}
-    <div class='posting-body'>
-<div class="wrap">
-    <span class="title"> 회원가입 </span>
-    <form class="form" method="post" action="/api/sign-up/">
-        {% csrf_token %}
-        <div class="inputs">
-            <label for="username">이름</label>
-            <input type="text" id="username" name="username">
+<section class="middle">
+    <div class="middle2">
+        <div class="sub_title">
+            <p>회원가입</p>
         </div>
-        <div class="inputs">
-            <label for="email">이메일</label>
-            <input type="email" id="email" name="email">
+        <span class="part"></span>
+        <div class="list_box">
+            <div class="list2">
+                <form class="form" method="post" action="/api/sign-up/">
+                    {% csrf_token %}
+                    <div class="inputs">
+                        <label for="username">이름</label>
+                        <input type="text" id="username" name="username">
+                    </div>
+                    <div class="inputs">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="inputs">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+                    <div class="inputs">
+                        <label for="password2">비밀번호 확인</label>
+                        <input type="password" id="password2" name="password2">
+                    </div>
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <div style="float: right" class="button_box">
+                        <button type="submit">회원가입</button>
+                        <a href="/api/sign-in">로그인 페이지로</a>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="inputs">
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <div class="inputs">
-            <label for="password2">비밀번호 확인</label>
-            <input type="password" id="password2" name="password2">
-        </div>
-        {% if error %}
-        <div class="alert alert-danger" role="alert">
-            {{ error }}
-        </div>
-        {% endif %}
-        <div style="float: right" class="button_box">
-            <button type="submit">회원가입</button>
-            <a href="/api/sign-in">로그인 페이지로</a>
-        </div>
-    </form>
-</div>
     </div>
+</section>
 {% endblock %}
