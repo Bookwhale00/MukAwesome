@@ -18,8 +18,7 @@
         <section class="logo">
             <a href="/">
                 <img src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'>
-        </section>
-        </a>
+            </a>
         </section>
         <section class="sign_box">
             {% if not user.is_authenticated %}
@@ -41,12 +40,14 @@
             {% else %}
             <ul class="sign_ul">
                 <li>
-                    <a class="sign_a" href="/api/mypage/{{ user.username }}"> 글목록 </a>
+                    <a class="sign_a" href="/api/mypage/{{ select_posting.author.username }}">{{
+                        select_posting.author.username }}'s page </a>
                 </li>
             </ul>
             {% endif %}
             <ul class="sign_ul">
                 <li>
+                    <a class="sign_a" href="/api/posting"> 포스팅 </a>
                     <a class="sign_a" href="/api/logout"> LogOut </a>
                 </li>
             </ul>
@@ -56,34 +57,41 @@
     </div>
     {% block content %}
     <div class='posting-body'>
-        <div class="">
-            <div class="media-bod">
+        <div class="posting-output-group">
+            <div class="posting-title">
                 <h5 class="mt-0">{{ select_posting.title }}</h5>
             </div>
-            <div class="media-bod">
+            <div class="created-time">
+                <span style="font-size: small">
+                    <a href="/api/mypage/{{ select_posting.author.username }}"> {{ select_posting.author.username }}
+                    </a>-{{ select_posting.created_at|timesince }} 전
+                </span>
+                {% if select_posting.author_id == user.id %}
+                <div class="edit-hrefs">
+                    <a class='edit-href' href="/api/mypage/edit/{{ select_posting.id }}"
+                        style="text-decoration:none">수정</a>
+                    <a class='edit-href' href="/api/mypage/edit/{{ select_posting.id }}"
+                        style="text-decoration:none">삭제</a>
+                </div>
+                {% endif %}
+            </div>
+            <hr>
+            <div class="postig-img">
                 <img src="{{ select_posting.thumbnail }}" style="width: 16rem">
             </div>
-
-            <div class="media-bod">
+            <div class="posting-content">
                 <h5 class="mt-0">{{ select_posting.content }}</h5>
+                <hr>
             </div>
-            <div style="text-align: right">
-                <span style="font-size: small">{{ select_posting.author.username }}-{{
-                    select_posting.created_at|timesince }} 전</span>
-            </div>
-            <a href="/api/mypage/edit/{{  select_posting.id }}">수정하기</a>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" href="/api/posting-detail/{{  select_posting.id }}" aria-label="Previous">
+                        <a class="page-link" href="/api/posting-detail/{{ select_posting.id }}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="/api/posting-detail/1">1</a></li>
-                    <li class="page-item"><a class="page-link" href="/api/posting-detail/2">2</a></li>
-                    <li class="page-item"><a class="page-link" href="/api/posting-detail/3">3</a></li>
                     <li class="page-item">
-                        <a class="page-link" href="/api/posting-detail/{{  select_posting.id }}" aria-label="Next">
+                        <a class="page-link" href=("/api/posting-detail/{{ select_posting.id }}" aria-label="Previous">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
@@ -92,6 +100,7 @@
         </div>
     </div>
     {% endblock %}
+
 </body>
 
 </html>
