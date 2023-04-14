@@ -12,14 +12,14 @@
             <ul class="messages">
                 {% for message in messages %}
                     <li>
-                        <div class="alert alert-{% if message.tags %} class="{{ message.tags }}"{% endif %}
-                        " role="alert">
-                        {{ message }}
+                        <div role="alert">
+                            {{ message }}
                         </div>
                     </li>
                 {% endfor %}
             </ul>
         {% endif %}
+        
             <div class="card" style="width: 30rem;">
                 {% if user.img %}
                     <img src="{{ user.img }}" class="card-img-top" alt="">
