@@ -44,20 +44,9 @@ def posting_detail_view(request, id):
 
         return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
 
-    # elif request.method == 'POST':
-    #
-    #     return redirect('/api/posting-detail/' + str(id))
-
-
 @login_required
 def mypage_list_view(request, username):
     if request.method == 'GET':
-        # select_posting = PostingModel.objects.get(id=id)
-        # default_thumbnail = 'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png'
-        #
-        # if select_posting == '':
-        #     select_posting.thumbnail = default_thumbnail
-
         author_wanted = UserInfo.objects.get(username=username)
         my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
         return render(request, 'posting/mypage.html', {'my_posting': my_posting})
@@ -70,7 +59,7 @@ def mypage_edit_view(request,pk):
         title = request.POST.get("title_edit","")
         thumbnail = request.POST.get("thumbnail_edit","")
         content = request.POST.get("content_edit","")
-        if title == '': # 제목입력을
+        if title == '': # 수정
             return render(request, 'posting/edit.html', {'error': '제목을 작성해주세요!'})
         elif content == '':
             return render(request, 'posting/edit.html', {'error': '내용을 작성해주세요!'})

@@ -61,7 +61,9 @@
                 <h5 class="mt-0">{{ select_posting.title }}</h5>
             </div>
             <div class="created-time">
-                <span style="font-size: small">{{ select_posting.author.username }} | {{ select_posting.created_at|timesince }} 전</span>
+                 <span style="font-size: small">
+            <a href="/api/mypage/{{ select_posting.author.username }}"> {{ select_posting.author.username }} </a>-{{ select_posting.created_at|timesince }} 전
+        </span>
                 {% if select_posting.author_id == user.id %}
                 <div class="edit-hrefs">
                     <a class='edit-href' href="/api/mypage/edit/{{ select_posting.id }}" style="text-decoration:none" >수정</a>
