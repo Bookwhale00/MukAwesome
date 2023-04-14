@@ -86,3 +86,11 @@ def mypage_edit_view(request,pk):
             return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
         else:
             return render(request, 'user/signin.html')
+
+def mypage_delete_view(request, pk):
+    posting_delete = PostingModel.objects.get(id=pk)
+    if request.user.is_authenticated and request.user == posting_delete.author:
+        posting_delete.delete()
+        return redirect('/api/mypage/'+ str(request.user.username))
+    else:
+        return redirect('/api/posting-detail/' + str(pk))
