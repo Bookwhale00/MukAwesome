@@ -66,7 +66,11 @@
             </div>
             <div class="created-time">
                  <span style="font-size: small">
+            {% if select_posting.author_id == Null %}
+                    <a> 탈퇴한 이용자 </a>-{{ select_posting.created_at|timesince }} 전
+            {% else %}
             <a href="/api/mypage/{{ select_posting.author.username }}"> {{ select_posting.author.username }} </a>-{{ select_posting.created_at|timesince }} 전
+            {% endif %}
         </span>
                 {% if select_posting.author_id == user.id %}
                 <div class="edit-hrefs">
@@ -92,7 +96,7 @@
                         </a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href=("/api/posting-detail/{{ select_posting.id }}" aria-label="Previous">
+                        <a class="page-link" href="/api/posting-detail/{{ select_posting.id }}" aria-label="Previous">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

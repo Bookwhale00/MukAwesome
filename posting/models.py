@@ -7,7 +7,8 @@ class PostingModel(models.Model):
     class Meta:
         db_table = "my_posting"
 
-    author = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        UserInfo, on_delete=models.SET_NULL, null=True, related_name='posts')
     title = models.CharField(max_length=256)
     thumbnail = models.TextField(default='')
     content = models.TextField()
