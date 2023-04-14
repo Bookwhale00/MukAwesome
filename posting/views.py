@@ -43,16 +43,34 @@ def posting_detail_view(request, id):
         select_posting = PostingModel.objects.get(id=id)
         default_thumbnail = 'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png'
 
-        # previous_select_posting = select_posting.id - 1   이전글
-        # next_select_posting = select_posting.id + 1       다음글
+        # previous_select_posting = select_posting.id - 1   id 기준 이전글
+        # next_select_posting = select_posting.id + 1       id 기준 다음글 ---> 중간에 게시글을 삭제해서 비연속적인 id 부분이 생기면 오류발생
 
-        if select_posting.thumbnail == '':
-            select_posting.thumbnail = default_thumbnail
+        previous_posting = PostingModel.objects.filter(created_at__lt=select_posting.created_at).order_by('-created_at').first()
+        next_posting = PostingModel.objects.filter(created_at__gt=select_posting.created_at).order_by(
+            'created_at').first()
 
-        return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
-                                                               # 'previous_': previous_select_posting,
-                                                               # 'next_': next_select_posting
-                                                               # })     posting_detail.html로 이전/다음 게시글의 id를 보내준다!
+        if previous_posting == None:
+            return render(request, 'posting/posting_detail.html', {'select_posting': select_posting,
+                                                                   'previous_': select_posting,
+                                                                   'next_': next_posting,
+                                                                   'error':'첫번째 게시글입니다.'})
+        elif next_posting == None:
+            return render(request, 'posting/posting_detail.html', {'select_posting': select_posting,
+                                                                   'previous_': previous_posting,
+                                                                   'next_': select_posting,
+                                                                   'error':'마지막 게시글입니다.'})
+        else:
+            if select_posting.thumbnail == '':
+                select_posting.thumbnail = default_thumbnail
+
+            return render(request, 'posting/posting_detail.html', {'select_posting': select_posting,
+                                                                   'previous_': previous_posting,
+                                                                   'next_': next_posting
+                                                                   })
+                                                                   # 'previous_': previous_select_posting,
+                                                                   # 'next_': next_select_posting
+                                                                   # })     posting_detail.html로 이전/다음 게시글의 id를 보내준다!
 
 
 def mypage_list_view(request, username):

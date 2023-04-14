@@ -90,13 +90,14 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" href="/api/posting-detail/{{ select_posting.id }}"
+                        <a class="page-link" href="/api/posting-detail/{{ previous_.id }}"
                            aria-label="Previous"> {# select_posting.id 대신 previous_를 넣어주면 이전글 #}
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
+                    <a> {{ error }} </a>
                     <li class="page-item">
-                        <a class="page-link" href="/api/posting-detail/{{ select_posting.id }}" aria-label="Previous">
+                        <a class="page-link" href="/api/posting-detail/{{ next_.id }}" aria-label="Previous">
                         {# select_posting.id 대신 next_ 를 넣어주면 다음글 #}
                         {# 현재 상태로는 양 끝에서 에러남. 중간에 삭제된 게시글이 있으면 동작하지 않음. 마이페이지에서 남의 글이 나옴. #}
                             <span aria-hidden="true">&raquo;</span>
