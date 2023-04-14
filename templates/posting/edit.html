@@ -67,20 +67,26 @@
 <div class="base">
 {% block content %}
     <div class='posting-body'>
-         <form class="form-area" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">
+        <form class="form-area" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">
             {% csrf_token %}
 
             <div class='posting-input-group'>
                 <div class=posting-top>
                     <section class="form-floating">
-                        <textarea class="form-control" placeholder="title" id="title" name="title_edit">{{ posting_edit.title }}</textarea>
+                        <textarea class="form-control" placeholder="title" id="title"
+                                  name="title_edit">{{ posting_edit.title }}</textarea>
                         <label for="floatingtitle">제목</label>
                     </section>
 
                     {# section class를 변경하면 스타일이 바뀜! #}
                     <section class="form-floating">
-                        <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
-                               name="thumbnail_edit">{{ posting_edit.thumbnail }}</textarea>
+                        {% if posting_edit.thumbnail == 'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png' %}
+                            <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
+                                      name="thumbnail_edit"></textarea>
+                        {% else %}
+                            <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
+                                      name="thumbnail_edit">{{ posting_edit.thumbnail }}</textarea>
+                        {% endif %}
                         <label for="floatingthumbnail">이미지 URL</label>
                     </section>
                     <hr>
@@ -98,7 +104,7 @@
     </div>
 
 {% endblock %}
-<
+
 </body>
 
 </html>
