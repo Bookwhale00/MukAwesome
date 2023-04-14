@@ -19,6 +19,10 @@ body {
     transition: 0.5s;
 }
 
+.change_background_color {
+    background-color: rgba(198, 198, 198, 1);
+}
+
 .nav_bar {
     position: fixed;
     top: 0px;
@@ -39,7 +43,7 @@ body {
 /*    height: 100%;*/
 /*}*/
 
-.logo > a > img {
+.logo>a>img {
     z-index: 2;
     position: relative;
 
@@ -69,6 +73,7 @@ body {
     font-weight: bold;
     margin-left: 7px;
 }
+
 .sign_div {
     display: flex;
     justify-content: space-between;
@@ -76,6 +81,7 @@ body {
     width: 100%;
     height: 100%;
 }
+
 .sign_div>a {
     font-size: 20px;
     font-weight: bold;
@@ -153,7 +159,7 @@ body {
     align-items: center;
 }
 
-.button_box > button {
+.button_box>button {
     width: 200px;
     height: 50px;
     border: 2px solid rgba(230, 184, 35, 1);
@@ -163,12 +169,12 @@ body {
     transition: 0.3s;
 }
 
-.button_box > button:hover {
+.button_box>button:hover {
     cursor: pointer;
     background-color: rgba(143, 205, 222, 1);
 }
 
-.button_box > a {
+.button_box>a {
     margin-top: 10px;
     font-size: 16px;
 }
@@ -293,6 +299,7 @@ body {
     display: grid;
     grid-template-columns: 300px 1fr;
 }
+
 .middle {
     position: relative;
     width: 95%;
@@ -534,7 +541,7 @@ body {
     align-items: center;
 }
 
-.posting-title > h5 {
+.posting-title>h5 {
     font-size: 40px;
     font-weight: bold;
     width: 1000px;
@@ -549,7 +556,7 @@ body {
     float: right;
 }
 
-.postig-img > img {
+.postig-img>img {
     margin: 40px auto;
 
 }
@@ -573,4 +580,3 @@ body {
 /*a {*/
 /*    text-decoration: none !important*/
 /*}*/
-
