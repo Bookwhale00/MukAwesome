@@ -6,19 +6,31 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %} | muk_awesome</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script defer src="{% static 'js/base.js' %}"></script>
 </head>
 
 <body>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li>
+                <div class="alert alert-{% if message.tags %} class=" {{ message.tags }}"{% endif %}
+                " role=" alert">
+                {{ message }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <div class="nav_bar">
     <section class="logo">
         <a href="/">
-            <img src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'>
-    </a>
+            <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
+        </a>
     </section>
     <section class="sign_box">
         {% if not user.is_authenticated %}
@@ -27,22 +39,32 @@
                     <a class="sign_a" href="/api/sign-in"> SignIn </a>
                 </li>
                 <li>
+                    <a>|</a>
+                </li>
+                <li>
                     <a class="sign_a" href="/api/sign-up"> SignUp </a>
                 </li>
             </ul>
         {% else %}
-            <ul class="sign_ul">
-                <li>
-                    <a class="sign_a" href="/api/mypage/{{ user.username }}"> 마이페이지 </a>
-                </li>
-                <li>
-                    <a class="sign_a" href="/api/logout"> LogOut </a>
-                </li>
-            </ul>
-
+            <div class="sign_div">
+                <a href="/api/mypage/{{ user.username }}">
+                    <span class="nav-link">
+                        my page
+                    </span>
+                </a>
+                <i class="xi-bars"></i>
+            </div>
         {% endif %}
+    </div>
+    <div class="slide_nav">
+        <a class="sign_a" href="/api/posting"> 포스팅 </a>
+        <a class="sign_a" href="/api/profile"> 프로필보기 </a>
+        <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
+        <a class="sign_a" href="/api/logout"> LogOut </a>
+    </div>
     </section>
 </div>
+<div class="base">
 {% block content %}
     <div class='posting-body'>
          <form class="form-area" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">
@@ -69,46 +91,14 @@
                 </section>
                 <hr>
             <section style="float: right">
-                <button type="submit" class="btn btn-primary" style="float: right" >저장</button>
+                <button type="submit" class="save-button" style="float: right" >저장</button>
             </section>
             </div>
         </form>
     </div>
-{#    <section class="middle">#}
-{#    <div class="middle2">#}
-{#        <div class="sub_title">#}
-{#            <p>수정하기</p>#}
-{#        </div>#}
-{#        <span class="part"></span>#}
-{#        <div class="list_box">#}
-{#            <div class="list2">#}
-{#                <form class="form" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">#}
-{#                    {% csrf_token %}#}
-{#                    <div class="inputs">#}
-{#                        <label for="title_edit">title</label>#}
-{#                        <input type="text" id="title_edit" name="title_edit" placeholder="{{ posting_edit.title }}">#}
-{#                    </div>#}
-{#                    <div class="inputs">#}
-{#                        <label for="thumbnail_edit">thumbnail</label>#}
-{#                        <input type="text" id="image_edit" name="image_edit" placeholder="{{ posting_edit.thumbnail }}">#}
-{#                    </div>#}
-{#                    <div class="inputs">#}
-{#                        <label for="content_edit">content</label>#}
-{#                        <textarea rows="100" cols="100" id="content_edit"#}
-{#                            name="content_edit">{{ posting_edit.content }}</textarea>#}
-{#                    </div>#}
-{#                    <div style="float: right" class="button_box">#}
-{#                        <button type="submit">수정하기</button>#}
-{#                        <a href="/api/mypage/delete/{{ posting_edit.pk }}">삭제하기</a>#}
-{#                        <a href="/"">Home</a>#}
-{#                    </div>#}
-{#                </form>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</section>#}
+
 {% endblock %}
+<
 </body>
 
 </html>
-

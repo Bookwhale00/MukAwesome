@@ -48,7 +48,6 @@ def posting_detail_view(request, id):
 
         return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
 
-@login_required
 def mypage_list_view(request, username):
     if request.method == 'GET':
         author_wanted = UserInfo.objects.get(username=username)
@@ -87,3 +86,6 @@ def mypage_edit_view(request,pk):
             return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
         else:
             return render(request, 'user/signin.html')
+
+
+
