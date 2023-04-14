@@ -18,8 +18,9 @@
         <section class="logo">
             <a href="/">
                 <img src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'>
+            </a>
         </section>
-        </a>
+
         </section>
         <section class="sign_box">
             {% if not user.is_authenticated %}
@@ -59,8 +60,14 @@
 
                     {# section class를 변경하면 스타일이 바뀜! #}
                     <section class="form-floating">
+                        {% if posting_edit.thumbnail ==
+                        'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png' %}
+                        <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
+                            name="thumbnail_edit"></textarea>
+                        {% else %}
                         <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
                             name="thumbnail_edit">{{ posting_edit.thumbnail }}</textarea>
+                        {% endif %}
                         <label for="floatingthumbnail">이미지 URL</label>
                     </section>
                     <hr>
@@ -105,12 +112,12 @@
                             {# <button type="submit">수정하기</button>#}
                             {# <a href="/api/mypage/delete/{{ posting_edit.pk }}">삭제하기</a>#}
                             {# <a href="/"">Home</a>#}
-{#                    </div>#}
-{#                </form>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</section>#}
+    {#                    </div>#}
+    {#                </form>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#</section>#}
 {% endblock %}
 </body>
 

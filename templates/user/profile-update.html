@@ -48,15 +48,14 @@
             <ul class="messages">
                 {% for message in messages %}
                 <li>
-                    <div class="alert alert-{% if message.tags %} class=" {{ message.tags }}"{% endif %} " role="
-                        alert">
+                    <div role="alert">
                         {{ message }}
                     </div>
                 </li>
                 {% endfor %}
             </ul>
             {% endif %}
-            <button type="submit">수정완료</button>  
+            <button type="submit">수정완료</button>
         </div>
     </form>
 </div>
