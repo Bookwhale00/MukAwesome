@@ -75,6 +75,39 @@
             </div>
         </form>
     </div>
+{#    <section class="middle">#}
+{#    <div class="middle2">#}
+{#        <div class="sub_title">#}
+{#            <p>수정하기</p>#}
+{#        </div>#}
+{#        <span class="part"></span>#}
+{#        <div class="list_box">#}
+{#            <div class="list2">#}
+{#                <form class="form" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">#}
+{#                    {% csrf_token %}#}
+{#                    <div class="inputs">#}
+{#                        <label for="title_edit">title</label>#}
+{#                        <input type="text" id="title_edit" name="title_edit" placeholder="{{ posting_edit.title }}">#}
+{#                    </div>#}
+{#                    <div class="inputs">#}
+{#                        <label for="thumbnail_edit">thumbnail</label>#}
+{#                        <input type="text" id="image_edit" name="image_edit" placeholder="{{ posting_edit.thumbnail }}">#}
+{#                    </div>#}
+{#                    <div class="inputs">#}
+{#                        <label for="content_edit">content</label>#}
+{#                        <textarea rows="100" cols="100" id="content_edit"#}
+{#                            name="content_edit">{{ posting_edit.content }}</textarea>#}
+{#                    </div>#}
+{#                    <div style="float: right" class="button_box">#}
+{#                        <button type="submit">수정하기</button>#}
+{#                        <a href="/api/mypage/delete/{{ posting_edit.pk }}">삭제하기</a>#}
+{#                        <a href="/"">Home</a>#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
 {% endblock %}
 </body>
 
