@@ -48,9 +48,8 @@ def posting_detail_view(request, id):
 
         return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
 
-@login_required
+
 def mypage_list_view(request, username):
-    if request.method == 'GET':
         author_wanted = UserInfo.objects.get(username=username)
         my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
         return render(request, 'posting/mypage.html', {'my_posting': my_posting})
@@ -87,3 +86,11 @@ def mypage_edit_view(request,pk):
             return render(request, 'posting/edit.html', {'posting_edit': posting_edit})
         else:
             return render(request, 'user/signin.html')
+
+def mypage_delete_view(request, pk):
+    posting_delete = PostingModel.objects.get(id=pk)
+    if request.user.is_authenticated and request.user == posting_delete.author:
+        posting_delete.delete()
+        return redirect('/api/mypage/'+ str(request.user.username))
+    else:
+        return redirect('/api/posting-detail/' + str(pk))
