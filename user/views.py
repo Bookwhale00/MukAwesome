@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import UserInfo
 from django.contrib.auth import get_user_model
+from django.contrib.auth import logout as auth_logout
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -102,3 +103,9 @@ def profile_update_view(request):
         return render(request, 'user/profile-update.html')
     
 # 계정 삭제 
+@login_required
+def delete_user_view(request):
+    if request.user.is_authenticated:
+        request.user.delete() # session 지우기
+        auth_logout(request) # 탈퇴 후 로그아웃 순으로 처리해야한다. (로그아웃 하고 계정삭제할 수는 없으니까!)
+    return redirect('/') # 탈퇴하고 나서 home으로 돌아가기 
