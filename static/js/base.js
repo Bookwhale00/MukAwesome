@@ -14,7 +14,3 @@ $(".xi-bars").click(function () {
     }
     isNavVisible = !isNavVisible;
 });
-
-$('.nav-link').click(function () {
-    $('.middle').addClass("change_background_color")
-});

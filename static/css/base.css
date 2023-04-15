@@ -19,10 +19,6 @@ body {
     transition: 0.5s;
 }
 
-.change_background_color {
-    background-color: rgba(198, 198, 198, 1);
-}
-
 .nav_bar {
     position: fixed;
     top: 0px;
@@ -35,7 +31,7 @@ body {
     padding: 30px;
     background-color: rgba(230, 184, 35, 1);
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
-    z-index: 100;
+    z-index: 200;
 }
 
 /*.logo {*/
@@ -343,7 +339,7 @@ body {
 }
 
 .part {
-    border-radius: 5px;
+    border-radius: 1 5px;
     background-color: rgb(128, 128, 128);
 }
 

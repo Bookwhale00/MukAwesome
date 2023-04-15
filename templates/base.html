@@ -53,18 +53,18 @@
                 <i class="xi-bars"></i>
             </div>
             {% endif %}
+            <div class="slide_nav">
+                <a class="sign_a" href="/api/posting"> 포스팅 </a>
+                <a class="sign_a" href="/api/profile"> 프로필보기 </a>
+                <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
+                <a class="sign_a" href="/api/logout"> LogOut </a>
+            </div>
         </section>
     </div>
     <div class="base">
         {% block content %}
 
         {% endblock %}
-    </div>
-    <div class="slide_nav">
-        <a class="sign_a" href="/api/posting"> 포스팅 </a>
-        <a class="sign_a" href="/api/profile"> 프로필보기 </a>
-        <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-        <a class="sign_a" href="/api/logout"> LogOut </a>
     </div>
 </body>
 
