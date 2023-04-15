@@ -54,17 +54,16 @@
                 <i class="xi-bars"></i>
             </div>
             {% endif %}
-    </div>
-    <div class="slide_nav">
-        <a class="sign_a" href="/api/posting"> 포스팅 </a>
-        <a class="sign_a" href="/api/profile"> 프로필보기 </a>
-        <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-        <a class="sign_a" href="/api/logout"> LogOut </a>
-    </div>
-    </section>
+            <div class="slide_nav">
+                <a class="sign_a" href="/api/posting"> 포스팅 </a>
+                <a class="sign_a" href="/api/profile"> 프로필보기 </a>
+                <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
+                <a class="sign_a" href="/api/logout"> LogOut </a>
+            </div>
+        </section>
     </div>
     <div class="base">
-        {% block content %}
+        <!-- {% block content %} -->
         <div class='posting-body'>
             <form class="form-area" method="post" action='/api/posting/'>
                 {% csrf_token %}
@@ -95,7 +94,7 @@
                 </div>
             </form>
         </div>
-        {% endblock %}
+        <!-- {% endblock %} -->
     </div>
 
 </body>
