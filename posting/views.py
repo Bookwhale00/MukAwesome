@@ -48,7 +48,6 @@ def posting_detail_view(request, id):
 
         return render(request, 'posting/posting_detail.html', {'select_posting': select_posting})
 
-
 def mypage_list_view(request, username):
         author_wanted = UserInfo.objects.get(username=username)
         my_posting = PostingModel.objects.filter(author=author_wanted).order_by('-created_at')
@@ -94,3 +93,4 @@ def mypage_delete_view(request, pk):
         return redirect('/api/mypage/'+ str(request.user.username))
     else:
         return redirect('/api/posting-detail/' + str(pk))
+
