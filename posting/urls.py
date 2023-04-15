@@ -9,5 +9,5 @@ urlpatterns = [
     path('api/mypage/<str:username>', views.mypage_list_view, name='mypage'),
     path('api/mypage/edit/<int:pk>', views.mypage_edit_view, name='posting_edit'),
     path('api/mypage/delete/<int:pk>', views.mypage_delete_view, name='posting_delete'),
+    path('api/mypage/posting-detail/<int:id>', views.author_posting_detail_view, name='author_posting_detail'),
 ]
-
