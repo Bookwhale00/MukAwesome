@@ -14,21 +14,22 @@
 </head>
 
 <body>
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li>
-            <div class="alert alert-{% if message.tags %} {{ message.tags }}{% endif %}›" role=" alert">
-                {{ message }}
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    {#{% if messages %}#}
+    {# <ul class="messages">#}
+        {# {% for message in messages %}#}
+        {# <li>#}
+            {# <div class="alert alert-{% if message.tags %} {{ message.tags }}{% endif %}›" role=" alert">#}
+                {# {{ message }}#}
+                {# </div>#}
+            {# </li>#}
+        {# {% endfor %}#}
+        {# </ul>#}
+    {#{% endif %}#}
     <div class="nav_bar">
         <section class="logo">
-            <a class="logo" href="/">
-                <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
+            <a href="/">
+                <img href="/"
+                    src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'>
             </a>
         </section>
         <section class="sign_box">
@@ -45,34 +46,16 @@
                 </li>
             </ul>
             {% else %}
-            {% if user.id == select_posting.author_id %}
             <div class="sign_div">
                 <a href="/api/mypage/{{ user.username }}">
                     <span class="nav-link">
-                        my page
-                    </span>
-                </a>
-                <i class="xi-bars"></i>
-            </div>
-            {% else %}
-            <div class="sign_div">
-                <a href="/api/mypage/{{ user.username }}">
-                    <span class="nav-link">
-                        {{ user.username }}'s page
+                        {{ user.username }} 님 반갑습니다!
                     </span>
                 </a>
                 <i class="xi-bars"></i>
             </div>
             {% endif %}
-            {% endif %}
-    </div>
-    <div class="slide_nav">
-        <a class="sign_a" href="/api/posting"> 포스팅 </a>
-        <a class="sign_a" href="/api/profile"> 프로필보기 </a>
-        <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-        <a class="sign_a" href="/api/logout"> LogOut </a>
-    </div>
-    </section>
+        </section>
     </div>
     <div class="base">
         {% block content %}
@@ -83,12 +66,12 @@
                 </div>
                 <div class="created-time">
                     <span style="font-size: small">
-                        {% if select_posting.author_id == Null %}
-                        <a> 탈퇴한 이용자 </a>-{{ select_posting.created_at|timesince }} 전
-                        {% else %}
+                        {# {% if select_posting.author_id == Null %}#}
+                        {# <a> 탈퇴한 이용자 </a>-{{ select_posting.created_at|timesince }} 전#}
+                        {# {% else %}#}
                         <a href="/api/mypage/{{ select_posting.author.username }}"> {{ select_posting.author.username }}
                         </a>-{{ select_posting.created_at|timesince }} 전
-                        {% endif %}
+                        {# {% endif %}#}
                     </span>
                     {% if select_posting.author_id == user.id %}
                     <div class="edit-hrefs">
@@ -110,16 +93,15 @@
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="/api/posting-detail/{{ previous_.id }}" aria-label="Previous"> {#
-                                select_posting.id 대신 previous_를 넣어주면 이전글 #}
+                            <a class="page-link" href="/api/mypage/posting-detail/{{ previous_.id }}"
+                                aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
                         <a> {{ error }} </a>
                         <li class="page-item">
-                            <a class="page-link" href="/api/posting-detail/{{ next_.id }}" aria-label="Previous">
-                                {# select_posting.id 대신 next_ 를 넣어주면 다음글 #}
-                                {# 현재 상태로는 양 끝에서 에러남. 중간에 삭제된 게시글이 있으면 동작하지 않음. 마이페이지에서 남의 글이 나옴. #}
+                            <a class="page-link" href="/api/mypage/posting-detail/{{ next_.id }}" aria-label="Previous">
+                                {# 현재 상태로는 마이페이지에서 남의 글이 나옴. #}
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -128,7 +110,13 @@
             </div>
         </div>
         {% endblock %}
-
+    </div>
+    <div class="slide_nav">
+        <a class="sign_a" href="/api/posting"> 포스팅 </a>
+        <a class="sign_a" href="/api/profile"> 프로필보기 </a>
+        <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
+        <a class="sign_a" href="/api/logout"> LogOut </a>
+    </div>
 </body>
 
 </html>

@@ -27,7 +27,7 @@ my posting
         <div class="list_box">
             <ul class="list1" id="list_box1">
                 {% for mp in my_posting %}
-                <li onclick="location.href = '/api/posting-detail/{{ mp.id }}';" style="cursor: pointer;">
+                <li onclick="location.href = '/api/mypage/posting-detail/{{ mp.id }}';" style="cursor: pointer;">
                     <div class="img_box_div">
                         <a href='/api/posting-detail/{{ mp.id }}' class="img_box">
                             <img src="{{ mp.thumbnail }}" class="card-img-top" alt="">
