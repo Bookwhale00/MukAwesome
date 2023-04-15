@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
-
 {% block title %}
 home
 {% endblock %}
-
 {% block content %}
     <section class="middle">
     <div class="middle2">
@@ -23,6 +21,11 @@ home
                     <div class="title_box_div">
                         <a href="/api/posting-detail/{{ ap.id }}" class="text_box">
                             <p class="res_name">{{ ap.title }}</p>
+                            {% if ap.author_id == Null %}
+                                <p class="infor">작성자: 탈퇴한 이용자</p>
+                            {% else %}
+                                <p class="infor">작성자: {{ ap.author.username }}</p>
+                            {% endif %}
                         </a>
                     </div>
                 </li>
