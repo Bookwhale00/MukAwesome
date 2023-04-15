@@ -34,18 +34,13 @@ body {
     z-index: 100;
 }
 
-/*.logo {*/
-/*    width: 170px;*/
-/*    height: 100%;*/
-/*}*/
-
 .logo > a > img {
     z-index: 2;
     position: relative;
-
-    width: 400px;
-    height: 300px;
-    margin: 100px 0px 0px 0px;
+    width: 230px;
+    height: 100px;
+    margin: 10px 0px 0px 10px;
+    /*background-color: black;*/
     /*추가*/
 }
 
@@ -69,6 +64,7 @@ body {
     font-weight: bold;
     margin-left: 7px;
 }
+
 .sign_div {
     display: flex;
     justify-content: space-between;
@@ -76,7 +72,8 @@ body {
     width: 100%;
     height: 100%;
 }
-.sign_div>a {
+
+.sign_div > a {
     font-size: 20px;
     font-weight: bold;
 }
@@ -119,9 +116,15 @@ body {
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
-    width: 80%;
-    height: 88%;
+    /*width: 80%;*/
+    /*height: 88%;*/
     padding: 10px;
+
+}
+
+.profile-card{
+    width: 300px;
+
 }
 
 .inputs {
@@ -173,7 +176,7 @@ body {
     font-size: 16px;
 }
 
-.button_box>a:hover {
+.button_box > a:hover {
     color: rgba(230, 97, 35, 1);
 }
 
@@ -192,7 +195,7 @@ body {
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
 }
 
-.slide_nav>a {
+.slide_nav > a {
     margin: 10px;
 }
 
@@ -226,9 +229,9 @@ body {
 }
 
 .card-img-top {
-    width: 300px;
+    width: 100%;
     height: 300px;
-    background-color: #FFE8A3;
+    border-radius: 10%;
     /*margin: 10px auto;*/
     /*position: absolute;*/
     /*transform:translate(0%,0%);*/
@@ -236,21 +239,31 @@ body {
 }
 
 .card-body {
+    /*border: 2px solid black;*/
+    /*border-radius: 10%;*/
+    background-color: white;
     width: 100%;
-
+    height: 200px;
+    word-break: normal;
     display: block;
     justify-content: center;
     align-items: center;
+    margin: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .card-title {
     font-family: "Quicksand", sans-serif;
     color: #F4B742;
-
+    word-break: normal;
+    white-space: normal;
     height: 50px;
     font-size: 2rem;
     text-align: left;
-    background-color: white;
+    width: 100%;
 
     padding-left: 10px;
     padding-right: 10px;
@@ -267,22 +280,20 @@ body {
 }
 
 .card-text {
-
-    height: 250px;
-    background-color: white;
+    width: 100%;
+    height: 200px;
     color: black;
-
+    word-break: normal;
     font-size: 1.4rem;
     text-align: left;
-
+    white-space: normal;
     display: inline-block;
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.5;
-
     padding: 10px 10px;
-
+text-overflow: ellipsis;
     word-wrap: break-word;
     display: -webkit-box;
     -webkit-line-clamp: 7;
@@ -293,15 +304,18 @@ body {
     display: grid;
     grid-template-columns: 300px 1fr;
 }
+
 .middle {
+    z-index: 3;
     position: relative;
-    width: 95%;
+    width: 90%;
     height: 100%;
-    margin: 30px auto 20px;
+    margin: 50px auto 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+
 }
 
 .middle2 {
@@ -314,8 +328,20 @@ body {
     border-radius: 28px;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
     background-color: rgba(230, 184, 35, 1);
-    margin: 40px auto 30px auto;
+    margin: 0px auto 30px auto;
 
+}
+
+.middle3 {
+    z-index: 3;
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin: 100px auto 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .sub_title {
@@ -330,7 +356,7 @@ body {
     text-shadow: 1px 1px 5px rgba(128, 128, 128, 0.7);
 }
 
-.sub_title>p {
+.sub_title > p {
     font-size: 25px;
     font-weight: bold;
 }
@@ -375,7 +401,7 @@ body {
     padding: 32px;
 }
 
-.list1>li {
+.list1 > li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -421,7 +447,7 @@ body {
     z-index: 30;
 }
 
-.img_box>img {
+.img_box > img {
     width: 300px;
     height: 300px;
     background-position: center;
@@ -472,7 +498,7 @@ body {
     align-items: flex-end;
 }
 
-.posting_info>div {
+.posting_info > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -514,10 +540,11 @@ body {
     display: flex;
     flex-flow: column;
     margin: 30px auto 20px auto;
-    width: 1000px;
+    width: 70%;
     height: 90%;
     border-radius: 15px;
     padding-top: 50px;
+
 }
 
 .form-floating {
@@ -525,13 +552,15 @@ body {
 }
 
 .posting-output-group {
-    z-index: 3;
+    /*z-index: 10;*/
     position: relative;
-    width: 1000px;
+    width: 70%;
     padding-top: 80px;
     margin: 30px auto 20px auto;
     justify-content: center;
     align-items: center;
+
+
 }
 
 .posting-title > h5 {
@@ -541,7 +570,6 @@ body {
 }
 
 .created-time {
-    width: 1000px;
     padding-top: 30px;
 }
 
@@ -550,16 +578,14 @@ body {
 }
 
 .postig-img > img {
-    margin: 40px auto;
-
-}
-
-.posting-content {
-    width: 1000px;
+    margin: 50px auto 50px auto;
+    justify-content: center;
+    align-items: center;
+    display: block;
 }
 
 .pagination {
-    margin: 20px auto 20px auto;
+    margin: 100px auto 20px auto;
 }
 
 .page-item {
@@ -570,7 +596,84 @@ body {
     color: gray;
 }
 
-/*a {*/
-/*    text-decoration: none !important*/
-/*}*/
+.p-href {
+    color: black;
+}
 
+.save-button {
+    width: 60px;
+    height: 37px;
+    border: 0px solid;
+    color: white;
+    background-color: rgba(230, 184, 35, 1);
+    border-radius: 5px;
+
+
+}
+
+a {
+    text-decoration: none !important
+}
+
+/*마이페이지*/
+.mypage-top {
+
+    width: 80%;
+    height: 300px;
+    margin: 30px auto 10px auto;
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    /*display: flex;*/
+    flex-flow: row;
+    margin: 30px auto 10px auto;
+
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+    overflow: hidden;
+    margin: 10px 10px 50px auto;
+
+}
+
+.profile-img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+.profile{
+    margin: auto auto 50px 10px;
+    padding-top: 50px;
+}
+.profile-title{
+
+    font-size: 20px;
+    margin: 50px 10px 10px 0px;
+}
+.profile-text{
+    width: 200px;
+    height: 100px;
+    font-size: 15px;
+    margin: 20px 10px 50px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    word-break: break-all;
+}
+.line{
+    width:80%;
+    margin-left : auto;
+  margin-right : auto;
+
+}
+
+.sign_a{
+    color: black;
+}

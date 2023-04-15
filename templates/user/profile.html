@@ -6,7 +6,6 @@
 
 {% block content %}
     <div class='posting-body'>
-        
     <form class="form" method="get" action="/api/profile/">
         <!-- 메시지 위치 수정-->
         {% if messages %}
@@ -20,12 +19,13 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        
-            <div class="card" style="width: 30rem;">
+
+            <div class="profile-card" {# style="width: 30rem; #}>
+
                 {% if user.img %}
                     <img src="{{ user.img }}" class="card-img-top" alt="">
                 {% else %}
-                    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbSa5xl%2Fbtr9QlUWfqG%2FsYkUhx3JrRfUobrq4l4Uwk%2Fimg.png" class="card-img-top" alt="">
+                    <img src='https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png' class="card-img-top" alt="">
                 {% endif %}
                 <div class="card-body" >
                   <h5 class="card-title">{{ user.username }}</h5>

@@ -27,8 +27,7 @@
 <div class="nav_bar">
     <section class="logo">
         <a href="/">
-            <img href="/"
-                 src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'>
+            <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
         </a>
     </section>
     <section class="sign_box">
@@ -48,12 +47,18 @@
             <div class="sign_div">
                 <a href="/api/mypage/{{ user.username }}">
                     <span class="nav-link">
-                        {{ user.username }} 님 반갑습니다!
+                        {{ user.username }}님 반갑습니다!
                     </span>
                 </a>
                 <i class="xi-bars"></i>
             </div>
         {% endif %}
+        <div class="slide_nav">
+            <a class="sign_a" href="/api/posting"> 포스팅 </a>
+            <a class="sign_a" href="/api/profile"> 프로필보기 </a>
+            <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
+            <a class="sign_a" href="/api/logout"> LogOut </a>
+        </div>
     </section>
 </div>
 <div class="base">
@@ -61,12 +66,5 @@
 
     {% endblock %}
 </div>
-    <div class="slide_nav">
-        <a class="sign_a" href="/api/posting"> 포스팅 </a>
-        <a class="sign_a" href="/api/profile"> 프로필보기 </a>
-        <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-        <a class="sign_a" href="/api/logout"> LogOut </a>
-    </div>
 </body>
-
 </html>
