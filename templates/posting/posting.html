@@ -29,8 +29,7 @@
 <div class="nav_bar">
     <section class="logo">
         <a href="/">
-            <img href="/"
-                 src='https://velog.velcdn.com/images/e_elin/post/8913630e-a91f-4382-9da9-028e26940979/image.png'>
+            <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
         </a>
     </section>
     <section class="sign_box">
@@ -50,54 +49,56 @@
             <div class="sign_div">
                 <a href="/api/mypage/{{ user.username }}">
                     <span class="nav-link">
-                        {{ user.username }} 님 반갑습니다!
+                        my page
                     </span>
                 </a>
                 <i class="xi-bars"></i>
             </div>
         {% endif %}
-    </section>
-</div>
-<div class="base">
-    {% block content %}
-    <div class='posting-body'>
-        <form class="form-area" method="post" action='/api/posting/'>
-            {% csrf_token %}
-
-            <div class='posting-input-group'>
-                <div class=posting-top>
-                    <section class="form-floating">
-                        <textarea class="form-control" placeholder="title" id="title" name="title"></textarea>
-                        <label for="floatingtitle">제목</label>
-                    </section>
-
-                    {# section class를 변경하면 스타일이 바뀜! #}
-                    <section class="form-floating">
-                        <textarea  type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
-                               name="thumbnail"></textarea>
-                        <label for="floatingthumbnail">이미지 URL</label>
-                    </section>
-                    <hr>
-                </div>
-                <section class="input-group">
-                    <textarea class="form-control" placeholder="내용을 입력해주세요..." id="content"
-                              name="content" style="height: 400px"></textarea>
-                </section>
-                <hr>
-            <section style="float: right">
-                <button type="submit" class="btn btn-primary" style="float: right" >저장</button>
-            </section>
-            </div>
-        </form>
     </div>
-{% endblock %}
-</div>
     <div class="slide_nav">
         <a class="sign_a" href="/api/posting"> 포스팅 </a>
         <a class="sign_a" href="/api/profile"> 프로필보기 </a>
         <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
         <a class="sign_a" href="/api/logout"> LogOut </a>
     </div>
+    </section>
+</div>
+<div class="base">
+    {% block content %}
+        <div class='posting-body'>
+            <form class="form-area" method="post" action='/api/posting/'>
+                {% csrf_token %}
+
+                <div class='posting-input-group'>
+                    <div class=posting-top>
+                        <section class="form-floating">
+                            <textarea class="form-control" placeholder="title" id="title" name="title"></textarea>
+                            <label for="floatingtitle">제목</label>
+                        </section>
+
+                        {# section class를 변경하면 스타일이 바뀜! #}
+                        <section class="form-floating">
+                        <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
+                                  name="thumbnail"></textarea>
+                            <label for="floatingthumbnail">이미지 URL</label>
+                        </section>
+                        <hr>
+                    </div>
+                    <section class="input-group">
+                    <textarea class="form-control" placeholder="내용을 입력해주세요..." id="content"
+                              name="content" style="height: 400px"></textarea>
+                    </section>
+                    <hr>
+                    <section style="float: right">
+                        <button type="submit" class="save-button" style="float: right">저장</button>
+                    </section>
+                </div>
+            </form>
+        </div>
+    {% endblock %}
+</div>
+
 </body>
 
 </html>
