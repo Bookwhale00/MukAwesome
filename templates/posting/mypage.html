@@ -4,26 +4,46 @@
     my posting
 {% endblock %}
 {% block content %}
-        <div class="mypage-top">
+    <div class="mypage-top">
         <section class="profile-img">
-            {% if user.img %}
-                <img src="{{ user.img }}" alt="">
+            {% if user.username == author_wanted.username %}
+                {% if user.img %}
+                    <img src="{{ user.img }}" alt="">
+                {% else %}
+                    <img src='https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png'
+                         alt="">
+                {% endif %}
+                </section>
+                <section class="profile">
+                    <h5 class="profile-title">{{ user.username }}</h5>
+                    <p class="profile-text">{{ user.bio }}</p>
+                </section>
             {% else %}
-                <img src='https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png'
-                     alt="">
+                {% if author_wanted.img %}
+                    <img src="{{ author_wanted.img }}" alt="">
+                {% else %}
+                    <img src='https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png'
+                         alt="">
+                {% endif %}
+                </section>
+                <section class="profile">
+                    <h5 class="profile-title">{{ author_wanted.username }}</h5>
+                    <p class="profile-text">{{ author_wanted.bio }}</p>
+                </section>
             {% endif %}
-        </section>
-        <section class="profile">
-            <h5 class="profile-title">{{ user.username }}</h5>
-            <p class="profile-text">{{ user.bio }}</p>
-        </section>
     </div>
     <hr class="line"/>
     <section class="middle3">
         <div class="middle2">
-            <div class="sub_title">
-                <p>내 포스팅</p>
-            </div>
+            {% if user.username == author_wanted.username %}
+                <div class="sub_title">
+                    <p>나의 포스팅</p>
+                </div>
+            {% else %}
+                <div class="sub_title">
+                    <p>{{ author_wanted.username }}의 포스팅</p>
+                </div>
+            {% endif %}
             <span class="part"></span>
             <div class="list_box">
                 <ul class="list1" id="list_box1">
