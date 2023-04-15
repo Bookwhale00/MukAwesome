@@ -9,31 +9,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script defer src="{% static 'js/base.js' %}"></script>
 </head>
 
 <body>
-{% if messages %}
+    {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-            <li>
-                <div class="alert alert-{% if message.tags %} class=" {{ message.tags }}"{% endif %}
-                " role=" alert">
+        <li>
+            <div class="alert alert-{% if message.tags %} class=" {{ message.tags }}"{% endif %} " role=" alert">
                 {{ message }}
-                </div>
-            </li>
+            </div>
+        </li>
         {% endfor %}
     </ul>
-{% endif %}
-<div class="nav_bar">
-    <section class="logo">
-        <a href="/">
-            <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
-        </a>
-    </section>
-    <section class="sign_box">
-        {% if not user.is_authenticated %}
+    {% endif %}
+    <div class="nav_bar">
+        <section class="logo">
+            <a href="/">
+                <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
+            </a>
+        </section>
+        <section class="sign_box">
+            {% if not user.is_authenticated %}
             <ul class="sign_ul">
                 <li>
                     <a class="sign_a" href="/api/sign-in"> SignIn </a>
@@ -45,7 +44,7 @@
                     <a class="sign_a" href="/api/sign-up"> SignUp </a>
                 </li>
             </ul>
-        {% else %}
+            {% else %}
             <div class="sign_div">
                 <a href="/api/mypage/{{ user.username }}">
                     <span class="nav-link">
@@ -54,57 +53,55 @@
                 </a>
                 <i class="xi-bars"></i>
             </div>
-        {% endif %}
+            {% endif %}
+            <div class="slide_nav">
+                <a class="sign_a" href="/api/posting"> 포스팅 </a>
+                <a class="sign_a" href="/api/profile"> 프로필보기 </a>
+                <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
+                <a class="sign_a" href="/api/logout"> LogOut </a>
+            </div>
+        </section>
     </div>
-    <div class="slide_nav">
-        <a class="sign_a" href="/api/posting"> 포스팅 </a>
-        <a class="sign_a" href="/api/profile"> 프로필보기 </a>
-        <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-        <a class="sign_a" href="/api/logout"> LogOut </a>
-    </div>
-    </section>
-</div>
-<div class="base">
-{% block content %}
-    <div class='posting-body'>
-        <form class="form-area" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">
-            {% csrf_token %}
+    <div class="base">
+        {% block content %}
+        <div class='posting-body'>
+            <form class="form-area" method="post" action="/api/mypage/edit/{{ posting_edit.pk }}">
+                {% csrf_token %}
 
-            <div class='posting-input-group'>
-                <div class=posting-top>
-                    <section class="form-floating">
-                        <textarea class="form-control" placeholder="title" id="title"
-                                  name="title_edit">{{ posting_edit.title }}</textarea>
-                        <label for="floatingtitle">제목</label>
-                    </section>
+                <div class='posting-input-group'>
+                    <div class=posting-top>
+                        <section class="form-floating">
+                            <textarea class="form-control" placeholder="title" id="title"
+                                name="title_edit">{{ posting_edit.title }}</textarea>
+                            <label for="floatingtitle">제목</label>
+                        </section>
 
-                    {# section class를 변경하면 스타일이 바뀜! #}
-                    <section class="form-floating">
-                        {% if posting_edit.thumbnail == 'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png' %}
+                        <!-- {# section class를 변경하면 스타일이 바뀜! #} -->
+                        <section class="form-floating">
+                            {% if posting_edit.thumbnail == 'https://velog.velcdn.com/images/e_elin/post/393c51bc-9fef-48a8-ae11-f47bb3e57bbc/image.png' %}
                             <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
-                                      name="thumbnail_edit"></textarea>
-                        {% else %}
+                                name="thumbnail_edit"></textarea>
+                            {% else %}
                             <textarea type="url" class="form-control" placeholder="thumbnail" id="thumbnail"
-                                      name="thumbnail_edit">{{ posting_edit.thumbnail }}</textarea>
-                        {% endif %}
-                        <label for="floatingthumbnail">이미지 URL</label>
+                                name="thumbnail_edit">{{ posting_edit.thumbnail }}</textarea>
+                            {% endif %}
+                            <label for="floatingthumbnail">이미지 URL</label>
+                        </section>
+                        <hr>
+                    </div>
+                    <section class="input-group">
+                        <textarea class="form-control" placeholder="내용을 입력해주세요..." id="content" name="content_edit"
+                            style="height: 400px">{{ posting_edit.content }}</textarea>
                     </section>
                     <hr>
+                    <section style="float: right">
+                        <button type="submit" class="save-button" style="float: right">저장</button>
+                    </section>
                 </div>
-                <section class="input-group">
-                    <textarea class="form-control" placeholder="내용을 입력해주세요..." id="content"
-                              name="content_edit" style="height: 400px">{{ posting_edit.content }}</textarea>
-                </section>
-                <hr>
-            <section style="float: right">
-                <button type="submit" class="save-button" style="float: right" >저장</button>
-            </section>
-            </div>
-        </form>
+            </form>
+        </div>
+        {% endblock %}
     </div>
-
-{% endblock %}
-
 </body>
 
 </html>

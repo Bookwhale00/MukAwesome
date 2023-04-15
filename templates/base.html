@@ -12,26 +12,25 @@
 </head>
 
 <body>
-{% if messages %}
+    {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-            <li>
-                <div class="alert alert-{% if message.tags %} class=" {{ message.tags }}"{% endif %}
-                " role=" alert">
+        <li>
+            <div class="alert alert-{% if message.tags %} class=" {{ message.tags }}"{% endif %} " role=" alert">
                 {{ message }}
-                </div>
-            </li>
+            </div>
+        </li>
         {% endfor %}
     </ul>
-{% endif %}
-<div class="nav_bar">
-    <section class="logo">
-        <a href="/">
-            <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
-        </a>
-    </section>
-    <section class="sign_box">
-        {% if not user.is_authenticated %}
+    {% endif %}
+    <div class="nav_bar">
+        <section class="logo">
+            <a href="/">
+                <img src='https://velog.velcdn.com/images/e_elin/post/4cfee234-9439-4a38-9d3a-16ccd531da04/image.png'>
+            </a>
+        </section>
+        <section class="sign_box">
+            {% if not user.is_authenticated %}
             <ul class="sign_ul">
                 <li>
                     <a class="sign_a" href="/api/sign-in"> SignIn </a>
@@ -43,28 +42,28 @@
                     <a class="sign_a" href="/api/sign-up"> SignUp </a>
                 </li>
             </ul>
-        {% else %}
+            {% else %}
             <div class="sign_div">
                 <a href="/api/mypage/{{ user.username }}">
                     <span class="nav-link">
-                        {{ user.username }}님 반갑습니다!
+                        {{ user.username }} 님 반갑습니다!
                     </span>
                 </a>
                 <i class="xi-bars"></i>
             </div>
-        {% endif %}
-        <div class="slide_nav">
-            <a class="sign_a" href="/api/posting"> 포스팅 </a>
-            <a class="sign_a" href="/api/profile"> 프로필보기 </a>
-            <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
-            <a class="sign_a" href="/api/logout"> LogOut </a>
-        </div>
-    </section>
-</div>
-<div class="base">
-    {% block content %}
+            {% endif %}
+            <div class="slide_nav">
+                <a class="sign_a" href="/api/posting"> 포스팅 </a>
+                <a class="sign_a" href="/api/profile"> 프로필보기 </a>
+                <a class="sign_a" href="/api/profile/update"> 프로필수정 </a>
+                <a class="sign_a" href="/api/logout"> LogOut </a>
+            </div>
+        </section>
+    </div>
+    <div class="base">
+        {% block content %}
 
-    {% endblock %}
-</div>
+        {% endblock %}
+    </div>
 </body>
 </html>

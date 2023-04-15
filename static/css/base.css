@@ -31,10 +31,10 @@ body {
     padding: 30px;
     background-color: rgba(230, 184, 35, 1);
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
-    z-index: 100;
+    z-index: 200;
 }
 
-.logo > a > img {
+.logo>a>img {
     z-index: 2;
     position: relative;
     width: 230px;
@@ -73,7 +73,7 @@ body {
     height: 100%;
 }
 
-.sign_div > a {
+.sign_div>a {
     font-size: 20px;
     font-weight: bold;
 }
@@ -88,7 +88,9 @@ body {
 }
 
 .base {
-    padding-top: 100px;
+    margin-top: 130px;
+    width: 100%;
+    /* height: 100%; */
 }
 
 .wrap {
@@ -122,7 +124,7 @@ body {
 
 }
 
-.profile-card{
+.profile-card {
     width: 300px;
 
 }
@@ -156,7 +158,7 @@ body {
     align-items: center;
 }
 
-.button_box > button {
+.button_box>button {
     width: 200px;
     height: 50px;
     border: 2px solid rgba(230, 184, 35, 1);
@@ -166,17 +168,17 @@ body {
     transition: 0.3s;
 }
 
-.button_box > button:hover {
+.button_box>button:hover {
     cursor: pointer;
     background-color: rgba(143, 205, 222, 1);
 }
 
-.button_box > a {
+.button_box>a {
     margin-top: 10px;
     font-size: 16px;
 }
 
-.button_box > a:hover {
+.button_box>a:hover {
     color: rgba(230, 97, 35, 1);
 }
 
@@ -195,7 +197,7 @@ body {
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
 }
 
-.slide_nav > a {
+.slide_nav>a {
     margin: 10px;
 }
 
@@ -293,7 +295,7 @@ body {
     text-overflow: ellipsis;
     line-height: 1.5;
     padding: 10px 10px;
-text-overflow: ellipsis;
+    text-overflow: ellipsis;
     word-wrap: break-word;
     display: -webkit-box;
     -webkit-line-clamp: 7;
@@ -315,6 +317,7 @@ text-overflow: ellipsis;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding-bottom: 30px;
 
 }
 
@@ -328,8 +331,6 @@ text-overflow: ellipsis;
     border-radius: 28px;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 6px 3px;
     background-color: rgba(230, 184, 35, 1);
-    margin: 0px auto 30px auto;
-
 }
 
 .middle3 {
@@ -342,6 +343,7 @@ text-overflow: ellipsis;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding-bottom: 30px;
 }
 
 .sub_title {
@@ -356,13 +358,13 @@ text-overflow: ellipsis;
     text-shadow: 1px 1px 5px rgba(128, 128, 128, 0.7);
 }
 
-.sub_title > p {
+.sub_title>p {
     font-size: 25px;
     font-weight: bold;
 }
 
 .part {
-    border-radius: 5px;
+    border-radius: 1 5px;
     background-color: rgb(128, 128, 128);
 }
 
@@ -371,7 +373,6 @@ text-overflow: ellipsis;
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100%;
     background-color: rgba(230, 201, 35, 1);
     border-radius: 28px;
 }
@@ -385,7 +386,7 @@ text-overflow: ellipsis;
     gap: 0px 32px;
     width: 100%;
     height: 100%;
-    padding: 32px;
+    padding: 32px 32px 0px 32px;
     transition-duration: 250ms;
     transition: 1s;
 }
@@ -401,7 +402,7 @@ text-overflow: ellipsis;
     padding: 32px;
 }
 
-.list1 > li {
+.list1>li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -447,7 +448,7 @@ text-overflow: ellipsis;
     z-index: 30;
 }
 
-.img_box > img {
+.img_box>img {
     width: 300px;
     height: 300px;
     background-position: center;
@@ -498,7 +499,7 @@ text-overflow: ellipsis;
     align-items: flex-end;
 }
 
-.posting_info > div {
+.posting_info>div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -563,7 +564,7 @@ text-overflow: ellipsis;
 
 }
 
-.posting-title > h5 {
+.posting-title>h5 {
     font-size: 40px;
     font-weight: bold;
     width: 1000px;
@@ -577,7 +578,7 @@ text-overflow: ellipsis;
     float: right;
 }
 
-.postig-img > img {
+.postig-img>img {
     margin: 50px auto 50px auto;
     justify-content: center;
     align-items: center;
@@ -642,22 +643,25 @@ a {
 
 }
 
-.profile-img > img {
+.profile-img>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 
 }
-.profile{
+
+.profile {
     margin: auto auto 50px 10px;
     padding-top: 50px;
 }
-.profile-title{
+
+.profile-title {
 
     font-size: 20px;
     margin: 50px 10px 10px 0px;
 }
-.profile-text{
+
+.profile-text {
     width: 200px;
     height: 100px;
     font-size: 15px;
@@ -667,13 +671,14 @@ a {
 
     word-break: break-all;
 }
-.line{
-    width:80%;
-    margin-left : auto;
-  margin-right : auto;
+
+.line {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
-.sign_a{
+.sign_a {
     color: black;
 }
