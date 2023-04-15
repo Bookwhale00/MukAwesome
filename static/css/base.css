@@ -428,12 +428,6 @@ body {
     padding: 15px;
 }
 
-.list1 p {
-    text-align: left;
-    font-size: 40px;
-    font-weight: bold;
-}
-
 .img_box {
     position: relative;
     user-select: none;
@@ -444,8 +438,11 @@ body {
     width: 300px;
     height: 300px;
     /* border-radius: 14px; */
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
     overflow: hidden;
     z-index: 30;
+    background-color: rgba(230, 184, 35, 1);
 }
 
 .img_box>img {
@@ -681,4 +678,14 @@ a {
 
 .sign_a {
     color: black;
+}
+
+.res_name {
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+}
+.infor {
+    font-size: 20px;
+    font-weight: bold;
 }

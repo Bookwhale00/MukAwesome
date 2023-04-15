@@ -70,7 +70,7 @@
                         {# <a> 탈퇴한 이용자 </a>-{{ select_posting.created_at|timesince }} 전#}
                         {# {% else %}#}
                         <a href="/api/mypage/{{ select_posting.author.username }}"> {{ select_posting.author.username }}
-                        </a>-{{ select_posting.created_at|timesince }} 전
+                        </a>| {{ select_posting.created_at|timesince }} 전
                         {# {% endif %}#}
                     </span>
                     {% if select_posting.author_id == user.id %}
